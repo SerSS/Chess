@@ -97,3 +97,7 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
             break;
     }
 }
+
+void GUI::moveOneStep(int x, int y, int checkableX, int checkableY) {
+
+}

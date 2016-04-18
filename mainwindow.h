@@ -42,6 +42,7 @@ public:
     void createGUI();
     void checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY);
     void initialFilling();
+    void moveOneStep(int x, int y, int checkableX, int checkableY);
 
 public slots:
     void startComputeWay();
