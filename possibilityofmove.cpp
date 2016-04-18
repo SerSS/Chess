@@ -2,9 +2,9 @@
 
 void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY){
     //проверка попытки боя своей фигуры
-    if (playerOnBoard[x][y] == 1 && playerOnBoard[checkableX][checkableY] == 1) {
+    if (playerOnBoard[x][y] == playerOnBoard[checkableX][checkableY]) {
         return;
-    } else if (playerOnBoard[x][y] == 2 && playerOnBoard[checkableX][checkableY] == 2) {
+    } else if (playerOnBoard[x][y] == playerOnBoard[checkableX][checkableY]) {
         return;
     }
 
