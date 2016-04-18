@@ -29,11 +29,7 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                                 moveOneStep(x, y, checkableX, checkableY);
                                 if (checkableX == 0) {
                                     //замена пешки
-
-
-
-
-
+                                    exchangeOfAPawn(checkableX, checkableY);
                                 }
                             }
                         } else {
@@ -42,11 +38,7 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                                 moveOneStep(x, y, checkableX, checkableY);
                                 if (checkableX == 0) {
                                     //замена пешки
-
-
-
-
-
+                                    exchangeOfAPawn(checkableX, checkableY);
                                 }
                             }
                         }
@@ -58,11 +50,7 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                         beatFigure(x, y, checkableX, checkableY);
                         if (checkableX == 0) {
                             //замена пешки
-
-
-
-
-
+                            exchangeOfAPawn(checkableX, checkableY);
                         }
                     }
                 }
@@ -76,11 +64,7 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                                 moveOneStep(x, y, checkableX, checkableY);
                                 if (checkableX == 7) {
                                     //замена пеешки
-
-
-
-
-
+                                    exchangeOfAPawn(checkableX, checkableY);
                                 }
                             }
                         } else {
@@ -89,11 +73,7 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                                 moveOneStep(x, y, checkableX, checkableY);
                                 if (checkableX == 7) {
                                     //замена пеешки
-
-
-
-
-
+                                    exchangeOfAPawn(checkableX, checkableY);
                                 }
                             }
                         }
@@ -105,11 +85,7 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                         beatFigure(x, y, checkableX, checkableY);
                         if (checkableX == 7) {
                             //замена пеешки
-
-
-
-
-
+                            exchangeOfAPawn(checkableX, checkableY);
                         }
                     }
                 }
@@ -123,5 +99,9 @@ void GUI::moveOneStep(int x, int y, int checkableX, int checkableY) {
 }
 
 void GUI::beatFigure(int x, int y, int checkableX, int checkableY) {
+
+}
+
+void GUI::exchangeOfAPawn(int x, int y) {
 
 }

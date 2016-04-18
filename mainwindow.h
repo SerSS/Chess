@@ -44,6 +44,7 @@ public:
     void initialFilling();
     void moveOneStep(int x, int y, int checkableX, int checkableY);
     void beatFigure(int x, int y, int checkableX, int checkableY);
+    void exchangeOfAPawn(int x, int y);
 
 public slots:
     void startComputeWay();
