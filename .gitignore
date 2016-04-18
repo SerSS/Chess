@@ -1,5 +1,11 @@
 *.pro
 *.pro.user
 *.pro.user.d7b43a3
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 *.h.autosave
+>>>>>>> Yura
 *.cpp.autosave
+=======
+>>>>>>> Sima

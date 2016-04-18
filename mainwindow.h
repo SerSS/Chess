@@ -25,6 +25,10 @@ const int cellHeight = 50;
 
 //int figuresOnBoard[8][8];
 //int playerOnBoard[8][8];
+<<<<<<< HEAD
+=======
+
+>>>>>>> Sima
 
 class GUI : public QObject  {
     Q_OBJECT
@@ -36,9 +40,14 @@ public:
 
     int figuresOnBoard[8][8];
     int playerOnBoard[8][8];
+<<<<<<< HEAD
+=======
+    int startFilling[8] = { 1, 2, 3, 4, 5, 3, 2, 1};
+>>>>>>> Sima
 
     void createGUI();
     void checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY);
+    void initialFilling();
 
 public slots:
     void startComputeWay();
