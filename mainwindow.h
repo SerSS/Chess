@@ -23,8 +23,8 @@
 const int cellWidth = 50;
 const int cellHeight = 50;
 
-int figuresOnBoard[8][8];
-int playerOnBoard[8][8];
+//int figuresOnBoard[8][8];
+//int playerOnBoard[8][8];
 
 class GUI : public QObject  {
     Q_OBJECT
@@ -33,6 +33,9 @@ public:
     QWidget* mainWidj;
     QGridLayout* mainLay;
     QPushButton cellButtons[8][8];
+
+    int figuresOnBoard[8][8];
+    int playerOnBoard[8][8];
 
     void createGUI();
     void checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY);
