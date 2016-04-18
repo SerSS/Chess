@@ -37,7 +37,7 @@ public:
 
     int figuresOnBoard[8][8];
     int playerOnBoard[8][8];
-    int startFilling[8] = { 1, 2, 3, 4, 5, 3, 2, 1};
+    int startFilling[8] = { 1, 2, 3, 4, 5, 3, 2, 1};        //Начальная расстановка фигур
 
     void createGUI();
     void checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY);
