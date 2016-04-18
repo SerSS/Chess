@@ -7,7 +7,41 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
 
             break;
         case 2://лошадь
-
+            if (checkableX < 8 && checkableY < 8 && checkableX >= 0 && checkableY >= 0) {
+                if (checkableX == (x-2)) {//вверх
+                    if (checkableY == (y-1)) {//влево
+                        //реализация хода
+                        moveOneStep(x, y, checkableX, checkableY);
+                    } else if (checkableY == (y+1)) {//вправо
+                        //реализация хода
+                        moveOneStep(x, y, checkableX, checkableY);
+                    }
+                } else if (checkableX == (x+2)) {//вниз
+                    if (checkableY == (y-1)) {//влево
+                        //реализация хода
+                        moveOneStep(x, y, checkableX, checkableY);
+                    } else if (checkableY == (y+1)) {//вправо
+                        //реализация хода
+                        moveOneStep(x, y, checkableX, checkableY);
+                    }
+                } else if (checkableY == (y-2)) {//влево
+                    if (checkableX == (x-1)) {//вверх
+                        //реализация хода
+                        moveOneStep(x, y, checkableX, checkableY);
+                    } else if (checkableX == (x+1)) {//вниз
+                        //реализация хода
+                        moveOneStep(x, y, checkableX, checkableY);
+                    }
+                } else if (checkableY == (y+2)) {//вправо
+                    if (checkableX == (x-1)) {//вверх
+                        //реализация хода
+                        moveOneStep(x, y, checkableX, checkableY);
+                    } else if (checkableX == (x+1)) {//вниз
+                        //реализация хода
+                        moveOneStep(x, y, checkableX, checkableY);
+                    }
+                }
+            }
             break;
         case 3://офицер
 
@@ -47,7 +81,7 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                                checkableX == (x-1) &&           //проверка боя
                                playerOnBoard[checkableX][checkableY] == 2) {
                         //реализация боя
-                        beatFigure(x, y, checkableX, checkableY);
+                        moveOneStep(x, y, checkableX, checkableY);
                         if (checkableX == 0) {
                             //замена пешки
                             exchangeOfAPawn(checkableX, checkableY);
@@ -82,7 +116,7 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                                checkableX == (x+1) &&           //проверка боя
                                playerOnBoard[checkableX][checkableY] == 1) {
                         //реализация боя
-                        beatFigure(x, y, checkableX, checkableY);
+                        moveOneStep(x, y, checkableX, checkableY);
                         if (checkableX == 7) {
                             //замена пеешки
                             exchangeOfAPawn(checkableX, checkableY);
@@ -95,10 +129,6 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
 }
 
 void GUI::moveOneStep(int x, int y, int checkableX, int checkableY) {
-
-}
-
-void GUI::beatFigure(int x, int y, int checkableX, int checkableY) {
 
 }
 
