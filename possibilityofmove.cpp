@@ -26,12 +26,12 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                         if (playerOnBoard[x][y] == 6) {//прверка первого хода
                             if (checkableX >= 4) {
                                 //реализация первго хода
-                                GUI::moveOneStep(x, y, checkableX, checkableY);
+                                moveOneStep(x, y, checkableX, checkableY);
                             }
                         } else {
                             if (checkableX == (x-1)) {
                                 //реализация остальных ходов
-                                GUI::moveOneStep(x, y, checkableX, checkableY);
+                                moveOneStep(x, y, checkableX, checkableY);
                             }
                         }
 
@@ -40,7 +40,7 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                                checkableX == (x-1) &&           //проверка боя
                                playerOnBoard[checkableX][checkableY] == 2) {
                         //реализация боя
-                        GUI::beatFigure(x, y, checkableX, checkableY);
+                        beatFigure(x, y, checkableX, checkableY);
                     }
                 }
             } else if (playerOnBoard[x][y] == 2) {//черные
@@ -50,12 +50,12 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                         if (playerOnBoard[x][y] == 1) {//прверка первого хода
                             if (checkableX <= 3) {
                                 //реализация первго хода
-                                GUI::moveOneStep(x, y, checkableX, checkableY);
+                                moveOneStep(x, y, checkableX, checkableY);
                             }
                         } else {
                             if (checkableX == (x+1)) {
                                 //реализация остальных ходов
-                                GUI::moveOneStep(x, y, checkableX, checkableY);
+                                moveOneStep(x, y, checkableX, checkableY);
                             }
                         }
 
@@ -64,7 +64,7 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                                checkableX == (x+1) &&           //проверка боя
                                playerOnBoard[checkableX][checkableY] == 1) {
                         //реализация боя
-                        GUI::beatFigure(x, y, checkableX, checkableY);
+                        beatFigure(x, y, checkableX, checkableY);
                     }
                 }
             }
