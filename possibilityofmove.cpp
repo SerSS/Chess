@@ -19,9 +19,29 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
 
             break;
         case 8://пешка
-            if (playerOnBoard[x][y] == 1) {
+            if (playerOnBoard[x][y] == 1) {//белые
+                if (checkableX < x) {//не пытаются ли пойти назад
+                    if (checkableY == y) {//вперед ли ход
+                        if (playerOnBoard[checkableX][checkableY] == 0) {//пустая ли ячейка
+                            //реализация хода
 
-            } else if (playerOnBoard[x][y] == 2) {
+
+
+
+                        }
+                    } else if ((checkableY == (y+1) || checkableY == (y-1)) &&
+                               checkableX == (x+1) &&           //возможен ли бой
+                               playerOnBoard[checkableX][checkableY] == 2) {
+                        //реализация боя
+
+
+
+
+
+
+                    }
+                }
+            } else if (playerOnBoard[x][y] == 2) {//черные
 
             }
             break;
