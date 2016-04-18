@@ -66,11 +66,13 @@ void GUI::startComputeWay() {
 
 void GUI::initialFilling() {        //Начальное размещение фигур на доске
     QTextStream cout(stdout);
+    int k = 7;
     for(int i=0; i<8; i++){
         figuresOnBoard[0][i] = startFilling[i];
         figuresOnBoard[1][i] = 8;
         figuresOnBoard[6][i] = 8;
-        figuresOnBoard[7][i] = startFilling[i];
+        figuresOnBoard[7][i] = startFilling[k];
+        k--;
     }
     for(int i=2; i<6; i++){
         for(int j=0; j<8; j++){
