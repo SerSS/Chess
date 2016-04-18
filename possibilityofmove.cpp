@@ -23,14 +23,21 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                 if (checkableX < x) {//не пытаются ли пойти назад
                     if (checkableY == y) {//вперед ли ход
                         if (playerOnBoard[checkableX][checkableY] == 0) {//пустая ли ячейка
-                            //реализация хода
+                            if (x == 6) { //первий ли ход
+                                //реализация первого хода
 
 
 
 
+                            } else {
+                                //реализация остальных ходоа
+
+
+
+                            }
                         }
                     } else if ((checkableY == (y+1) || checkableY == (y-1)) &&
-                               checkableX == (x+1) &&           //возможен ли бой
+                               checkableX == (x-1) &&           //возможен ли бой
                                playerOnBoard[checkableX][checkableY] == 2) {
                         //реализация боя
 
@@ -42,7 +49,34 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                     }
                 }
             } else if (playerOnBoard[x][y] == 2) {//черные
+                if (checkableX > x) {//не пытаются ли пойти назад
+                    if (checkableY == y) {//вперед ли ход
+                        if (playerOnBoard[checkableX][checkableY] == 0) {//пустая ли ячейка
+                            if (x == 1) { //первий ли ход
+                                //реализация первого хода
 
+
+
+
+                            } else {
+                                //реализация остальных ходоа
+
+
+
+                            }
+                        }
+                    } else if ((checkableY == (y+1) || checkableY == (y-1)) &&
+                               checkableX == (x+1) &&           //возможен ли бой
+                               playerOnBoard[checkableX][checkableY] == 1) {
+                        //реализация боя
+
+
+
+
+
+
+                    }
+                }
             }
             break;
     }
