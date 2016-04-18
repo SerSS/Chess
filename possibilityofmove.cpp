@@ -1,10 +1,54 @@
 #include "mainwindow.h"
 
 void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY){
+    //проверка попытки боя своей фигуры
+    if (playerOnBoard[x][y] == 1 && playerOnBoard[checkableX][checkableY] == 1) {
+        return;
+    } else if (playerOnBoard[x][y] == 2 && playerOnBoard[checkableX][checkableY] == 2) {
+        return;
+    }
 
     switch (figuresOnBoard[x][y]) {
         case 1://ладья
-
+            if (checkableX < 8 && checkableY < 8 && checkableX >= 0 && checkableY >= 0) {
+                if (checkableX == x) {
+                    if (checkableY < y) {//влево
+                        for (int i = y - 1; i > checkableY; i--) {//проверка нет ли по пути фигур
+                            if (figuresOnBoard[x][i] != 0) {
+                                return;
+                            }
+                        }
+                        //реализация хода
+                        moveOneStep(x, y, checkableX, checkableY);
+                    } else if (checkableY > y) {//вправо
+                        for (int i = y + 1; i < checkableY; i++) {//проверка нет ли по пути фигур
+                            if (figuresOnBoard[x][i] != 0) {
+                                return;
+                            }
+                        }
+                        //реализация хода
+                        moveOneStep(x, y, checkableX, checkableY);
+                    }
+                } else if (checkableY == y) {
+                    if (checkableX < x) {//вверх
+                        for (int i = x - 1; i > checkableX; i--) {//проверка нет ли по пути фигур
+                            if (figuresOnBoard[i][y] != 0) {
+                                return;
+                            }
+                        }
+                        //реализация хода
+                        moveOneStep(x, y, checkableX, checkableY);
+                    } else if (checkableX > x) {//вниз
+                        for (int i = x + 1; i < checkableX; i++) {//проверка нет ли по пути фигур
+                            if (figuresOnBoard[i][y] != 0) {
+                                return;
+                            }
+                        }
+                        //реализация хода
+                        moveOneStep(x, y, checkableX, checkableY);
+                    }
+                }
+            }
             break;
         case 2://лошадь
             if (checkableX < 8 && checkableY < 8 && checkableX >= 0 && checkableY >= 0) {
