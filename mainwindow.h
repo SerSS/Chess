@@ -36,12 +36,7 @@ public:
 
     int figuresOnBoard[8][8];
     int playerOnBoard[8][8];
-<<<<<<< HEAD
     int startFilling[8] = { 1, 2, 3, 4, 5, 3, 2, 1};        //Начальная расстановка фигур
-=======
-
-    int startFilling[8] = { 1, 2, 3, 4, 5, 3, 2, 1};
->>>>>>> Yura
 
     void createGUI();
     void checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY);
