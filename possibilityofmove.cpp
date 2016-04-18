@@ -51,7 +51,6 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                             }
                         }
 
-
                     } else if ((checkableY == (y-1) || checkableY == (y+1)) &&
                                checkableX == (x-1) &&           //проверка боя
                                playerOnBoard[checkableX][checkableY] == 2) {
@@ -98,7 +97,6 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                                 }
                             }
                         }
-
 
                     } else if ((checkableY == (y-1) || checkableY == (y+1)) &&
                                checkableX == (x+1) &&           //проверка боя
