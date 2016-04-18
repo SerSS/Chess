@@ -21,23 +21,31 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
         case 8://пешка
             if (playerOnBoard[x][y] == 1) {//белые
                 if (checkableX < x) {//не пытаются ли пойти назад
-                    if (checkableY == y) {//вперед ли ход
-                        if (playerOnBoard[checkableX][checkableY] == 0) {//пустая ли ячейка
-                            if (x == 6) { //первий ли ход
-                                //реализация первого хода
+                    if (y == checkableY &&      //проверка ход или бой
+                            playerOnBoard[checkableX][checkableY] == 0) {
+                        if (playerOnBoard[x][y] == 6) {//прверка первого хода
+                            if (checkableX >= 4) {
+                                //реализация первго хода
 
 
 
 
-                            } else {
-                                //реализация остальных ходоа
+
+
+                            }
+                        } else {
+                            if (checkableX == (x-1)) {
+                                //реализация остальных ходов
+
 
 
 
                             }
                         }
-                    } else if ((checkableY == (y+1) || checkableY == (y-1)) &&
-                               checkableX == (x-1) &&           //возможен ли бой
+
+
+                    } else if ((checkableY == (y-1) || checkableY == (y+1)) &&
+                               checkableX == (x-1) &&           //проверка боя
                                playerOnBoard[checkableX][checkableY] == 2) {
                         //реализация боя
 
@@ -50,23 +58,31 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                 }
             } else if (playerOnBoard[x][y] == 2) {//черные
                 if (checkableX > x) {//не пытаются ли пойти назад
-                    if (checkableY == y) {//вперед ли ход
-                        if (playerOnBoard[checkableX][checkableY] == 0) {//пустая ли ячейка
-                            if (x == 1) { //первий ли ход
-                                //реализация первого хода
+                    if (y == checkableY &&      //проверка ход или бой
+                            playerOnBoard[checkableX][checkableY] == 0) {
+                        if (playerOnBoard[x][y] == 1) {//прверка первого хода
+                            if (checkableX <= 3) {
+                                //реализация первго хода
 
 
 
 
-                            } else {
-                                //реализация остальных ходоа
+
+
+                            }
+                        } else {
+                            if (checkableX == (x+1)) {
+                                //реализация остальных ходов
+
 
 
 
                             }
                         }
-                    } else if ((checkableY == (y+1) || checkableY == (y-1)) &&
-                               checkableX == (x+1) &&           //возможен ли бой
+
+
+                    } else if ((checkableY == (y-1) || checkableY == (y+1)) &&
+                               checkableX == (x+1) &&           //проверка боя
                                playerOnBoard[checkableX][checkableY] == 1) {
                         //реализация боя
 
