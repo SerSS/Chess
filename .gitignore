@@ -1,3 +1,7 @@
 *.pro
 *.pro.user
 *.pro.user.d7b43a3
+<<<<<<< HEAD
+=======
+*.h.autosave
+>>>>>>> Sima
