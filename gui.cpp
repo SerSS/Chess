@@ -42,10 +42,10 @@ void GUI::createGUI() {
 
             cellButtons[i][j].connect(&cellButtons[i][j], SIGNAL(clicked()), this, SLOT(startComputeWay()));
             cellButtons[i][j].show();
+        }
     }
-
+    initialFilling();
     mainWidj->show();
-    }
 }
 void GUI::startComputeWay() {
     QObject* obj = QObject::sender();
@@ -62,4 +62,25 @@ void GUI::startComputeWay() {
     //QTextStream cout(stdout);
     //cout << QString(QString::number(first)) << "-" << QString(QString::number(second));
     //cellButtons[first][second].setStyleSheet(QString::fromUtf8("background-color: blue;"));
+}
+
+void GUI::initialFilling() {
+    QTextStream cout(stdout);
+    for(int i=0; i<8; i++){
+        figuresOnBoard[0][i] = startFilling[i];
+        figuresOnBoard[1][i] = 8;
+        figuresOnBoard[6][i] = 8;
+        figuresOnBoard[7][i] = startFilling[i];
+    }
+    for(int i=2; i<6; i++){
+        for(int j=0; j<8; j++){
+            figuresOnBoard[i][j] = 0;
+        }
+    }
+    for(int i=0;i<8;i++){
+        for(int j=0;j<8;j++){
+            cout << figuresOnBoard[i][j] << " ";
+        }
+        cout << endl;
+    }
 }
