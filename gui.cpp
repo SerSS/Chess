@@ -22,9 +22,12 @@ void GUI::createGUI() {         //Создание главного окна
             mainLay->addWidget(&cellButtons[i][j], i, j);
 
             cellButtons[i][j].setText(QString::number(i) + QString::number(j));
-            cellButtons[i][j].setPalette(*palette1);
+            //cellButtons[i][j].setPalette(*palette1);
             cellButtons[i][j].setFocusPolicy(Qt::NoFocus);
             cellButtons[i][j].setFixedSize(cellWidth, cellHeight);
+
+            cellButtons[i][j].setStyleSheet(QString::fromUtf8("background-image: url('damaB.png');"));
+
 
             if (i % 2 == 0)             //Изменяем цвет клеток на белый и чёрный
             {
@@ -56,6 +59,18 @@ void GUI::startComputeWay() {
 
     int first = (int)buttonText[0] - 48;
     int second = (int)buttonText[1] - 48;
+
+    if(click == 0){     //Если выбираем фигуру которой хотим походить, то записываем координаты  выбранной фигуры
+        click = 1;
+        startX = first;
+        startY = second;
+    }
+    if(click == 1){     //Записываем координаты клетки на которую хотим
+        click = 0;      //походить и вызываем проверку возможности этого хода
+        nextX = first;
+        nextY = second;
+        checkThePossibilityOfStep(startX, startY, nextX, nextY);
+    }
 
     //checkThePossibilityOfStep();
 
