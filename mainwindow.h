@@ -23,12 +23,6 @@
 const int cellWidth = 50;
 const int cellHeight = 50;
 
-//int figuresOnBoard[8][8];
-//int playerOnBoard[8][8];
-<<<<<<< HEAD
-=======
-
->>>>>>> Sima
 
 class GUI : public QObject  {
     Q_OBJECT
@@ -40,14 +34,19 @@ public:
 
     int figuresOnBoard[8][8];
     int playerOnBoard[8][8];
-<<<<<<< HEAD
-=======
-    int startFilling[8] = { 1, 2, 3, 4, 5, 3, 2, 1};
->>>>>>> Sima
+    int startFilling[8] = { 1, 2, 3, 4, 5, 3, 2, 1};        //Начальная расстановка фигур
+
+    int click = 0;          //Отвечает за распознавание выбора начальнойпозиции или позиции на которую ходим
+    int startX = 0;         //Координаты фигуры которой хотим походить
+    int startY = 0;         //
+    int nextX = 0;          //Координаты клетки на которую хотим походить
+    int nextY = 0;          //
 
     void createGUI();
     void checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY);
     void initialFilling();
+    void moveOneStep(int x, int y, int checkableX, int checkableY);
+    void exchangeOfAPawn(int x, int y);
 
 public slots:
     void startComputeWay();
