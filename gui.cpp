@@ -74,16 +74,16 @@ void GUI::startComputeWay() {
 
     //checkThePossibilityOfStep();
 
-    QTextStream cout(stdout);
+    //QTextStream cout(stdout);
     //cout << QString(QString::number(first)) << "-" << QString(QString::number(second));
 
 
 
-    QPixmap pixmap (QDir::currentPath() + "/Image/damaB.png");
+    /*QPixmap pixmap (QDir::currentPath() + "/Image/damaB.png");
     QIcon icon (pixmap);
     cellButtons[first][second].setIcon(icon);
-    cellButtons[first][second].setIconSize(pixmap.rect().size());
-    //cellButtons[first][second].setStyleSheet(QString::fromUtf8("border-image: url(:damaB.png);"));
+    cellButtons[first][second].setIconSize(pixmap.rect().size());*/
+
 }
 
 void GUI::initialFilling() {        //Начальное размещение фигур на доске
