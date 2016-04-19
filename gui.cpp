@@ -26,11 +26,6 @@ void GUI::createGUI() {         //Создание главного окна
             cellButtons[i][j].setFocusPolicy(Qt::NoFocus);
             cellButtons[i][j].setFixedSize(cellWidth, cellHeight);
 
-            //Тестовое заполнение кнопок картинками
-            cellButtons[i][j].setIcon(pixmap[i%2][j%6]);
-            cellButtons[i][j].setIconSize(cellButtons[i][j].size());
-
-
             if (i % 2 == 0)             //Изменяем цвет клеток на белый и чёрный
             {
                 if (j % 2 == 0) cellButtons[i][j].setStyleSheet(QString::fromUtf8(
@@ -67,13 +62,13 @@ void GUI::startComputeWay() {
         startX = first;
         startY = second;
     }
-    if(click == 1){     //Записываем координаты клетки на которую хотим
+    else if(click == 1){     //Записываем координаты клетки на которую хотим
         click = 0;      //походить и вызываем проверку возможности этого хода
         nextX = first;
         nextY = second;
         checkThePossibilityOfStep(startX, startY, nextX, nextY);
     }
-    QTextStream cout(stdout);
+    //QTextStream cout(stdout);
     //cout << QString(QString::number(first)) << "-" << QString(QString::number(second));
 }
 

@@ -32,20 +32,20 @@ public:
     QGridLayout* mainLay;
     QPushButton cellButtons[8][8];
 
-    QIcon pixmap[2][6] = {{             //Массив с обьектами изображений фигур
-                            QPixmap(QDir::currentPath() + "/image/ladyaB.png"),
+    QIcon figureImage[2][6] = {{             //Массив с обьектами изображений фигур
+                            QPixmap(QDir::currentPath() + "/image/ladyaW.png"),
+                            QPixmap(QDir::currentPath() + "/image/horseW.png"),
+                            QPixmap(QDir::currentPath() + "/image/oficerW.png"),
+                            QPixmap(QDir::currentPath() + "/image/damaW.png"),
+                            QPixmap(QDir::currentPath() + "/image/korolW.png"),
+                            QPixmap(QDir::currentPath() + "/image/peshkaW.png")},
+
+                            {QPixmap(QDir::currentPath() + "/image/ladyaB.png"),
                             QPixmap(QDir::currentPath() + "/image/horseB.png"),
                             QPixmap(QDir::currentPath() + "/image/oficerB.png"),
                             QPixmap(QDir::currentPath() + "/image/damaB.png"),
                             QPixmap(QDir::currentPath() + "/image/korolB.png"),
-                            QPixmap(QDir::currentPath() + "/image/peshkaB.png")},
-
-                            {QPixmap(QDir::currentPath() + "/image/ladyaW.png"),
-                             QPixmap(QDir::currentPath() + "/image/horseW.png"),
-                             QPixmap(QDir::currentPath() + "/image/oficerW.png"),
-                             QPixmap(QDir::currentPath() + "/image/damaW.png"),
-                             QPixmap(QDir::currentPath() + "/image/korolW.png"),
-                             QPixmap(QDir::currentPath() + "/image/peshkaW.png")}
+                            QPixmap(QDir::currentPath() + "/image/peshkaB.png")}
                         };
 
     int figuresOnBoard[8][8];
