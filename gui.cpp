@@ -26,6 +26,9 @@ void GUI::createGUI() {         //Создание главного окна
             cellButtons[i][j].setFocusPolicy(Qt::NoFocus);
             cellButtons[i][j].setFixedSize(cellWidth, cellHeight);
 
+            cellButtons[i][j].setStyleSheet(QString::fromUtf8("background-image: url('damaB.png');"));
+
+
             if (i % 2 == 0)             //Изменяем цвет клеток на белый и чёрный
             {
                 if (j % 2 == 0) cellButtons[i][j].setStyleSheet(QString::fromUtf8(

@@ -2,16 +2,7 @@
 
 void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY){
     //проверка попытки боя своей фигуры
-
-    //ОШИБКА!!!!
-//-///////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // если playerOnBoard[x][y] равен 0 это значит что эта клетка пустая и на неё можно стать.
-    //Ошибка заключается в том, что с таким условием при попытке стать на пустую клетку у тебя оно всегда
-    //будет завершать работу фукции
-//-//////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    //if (/*playerOnBoard[x][y] == 0 ||*/ playerOnBoard[x][y] == playerOnBoard[checkableX][checkableY] || (x==checkableX && y = checkableY)) {
-    if (playerOnBoard[x][y] == playerOnBoard[checkableX][checkableY] || (x==checkableX && y==checkableY)) {
+    if (playerOnBoard[x][y] == 0 || playerOnBoard[x][y] == playerOnBoard[checkableX][checkableY] || (x==checkableX && y==checkableY)) {
         return;
     }
 
