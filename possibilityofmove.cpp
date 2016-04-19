@@ -2,11 +2,18 @@
 
 void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY){
     //проверка попытки боя своей фигуры
-    if (playerOnBoard[x][y] == 0 || playerOnBoard[x][y] == playerOnBoard[checkableX][checkableY]) {
-        return;
-    } else if (playerOnBoard[x][y] == 0 || playerOnBoard[x][y] == playerOnBoard[checkableX][checkableY]) {
+
+    //ОШИБКА!!!!
+//-///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // если playerOnBoard[x][y] равен 0 это значит что эта клетка пустая и на неё можно стать.
+    //Ошибка заключается в том, что с таким условием при попытке стать на пустую клетку у тебя оно всегда
+    //будет завершать работу фукции
+//-//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    if (/*playerOnBoard[x][y] == 0 ||*/ playerOnBoard[x][y] == playerOnBoard[checkableX][checkableY]) {
         return;
     }
+
 
     switch (figuresOnBoard[x][y]) {
         case 1://ладья
@@ -88,7 +95,39 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
             }
             break;
         case 3://офицер
-
+            if (checkableX < 8 && checkableY < 8 && checkableX >= 0 && checkableY >= 0) {
+                if((x - checkableX) == (y - checkableY) || (x - checkableX) == ((y - checkableY) * (-1))){//проверка по диагонали ход или нет
+                    //запускаем проверку нет ли фигур по пути
+                    if(x < checkableX && y < checkableY){// вниз вправо
+                        for(int i=x, j=y; i < checkableX; i++, j++){
+                            if(figuresOnBoard[i][j] != 0){
+                                return;
+                            }
+                        }
+                    }
+                    if(x < checkableX && y > checkableY){// вниз влево
+                        for(int i=x, j=y; i < checkableX; i++, j--){
+                            if(figuresOnBoard[i][j] != 0){
+                                return;
+                            }
+                        }
+                    }
+                    if(x > checkableX && y < checkableY){// вверх вправо
+                        for(int i=x, j=y; i > checkableX; i--, j++){
+                            if(figuresOnBoard[i][j] != 0){
+                                return;
+                            }
+                        }
+                    }
+                    if(x > checkableX && y > checkableY){// вверх влево
+                        for(int i=x, j=y; i > checkableX; i--, j--){
+                            if(figuresOnBoard[i][j] != 0){
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
             break;
         case 4://дамка
 
