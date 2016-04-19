@@ -10,7 +10,8 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
     //будет завершать работу фукции
 //-//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    if (/*playerOnBoard[x][y] == 0 ||*/ playerOnBoard[x][y] == playerOnBoard[checkableX][checkableY]) {
+    //if (/*playerOnBoard[x][y] == 0 ||*/ playerOnBoard[x][y] == playerOnBoard[checkableX][checkableY] || (x==checkableX && y = checkableY)) {
+    if (playerOnBoard[x][y] == playerOnBoard[checkableX][checkableY] || (x==checkableX && y==checkableY)) {
         return;
     }
 
@@ -204,7 +205,14 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
             }
             break;
         case 5://король
-
+            if (checkableX < 8 && checkableY < 8 && checkableX >= 0 && checkableY >= 0) {
+                if(x - checkableX == 1 || x - checkableX == (-1) || x - checkableX == 0){
+                    if(y - checkableY == 1 || y - checkableY == (-1) || y - checkableY == 0){
+                        //реализация хода
+                        moveOneStep(x, y, checkableX, checkableY);
+                    }
+                }
+            }
             break;
         case 8://пешка
             if (playerOnBoard[x][y] == 1) {//белые
