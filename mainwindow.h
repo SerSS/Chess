@@ -22,9 +22,13 @@
 
 const int cellWidth = 50;
 const int cellHeight = 50;
+int click = 0;          //Отвечает за распознавание выбора начальнойпозиции или позиции на которую ходим
+int startX = 0;         //Координаты фигуры которой хотим походить
+int startY = 0;         //
+int nextX = 0;          //Координаты клетки на которую хотим походить
+int nextY = 0;          //
 
-//int figuresOnBoard[8][8];
-//int playerOnBoard[8][8];
+
 
 class GUI : public QObject  {
     Q_OBJECT
