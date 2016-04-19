@@ -6,7 +6,6 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
         return;
     }
 
-
     switch (figuresOnBoard[x][y]) {
         case 1://ладья
             if (checkableX < 8 && checkableY < 8 && checkableX >= 0 && checkableY >= 0) {
@@ -281,8 +280,18 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
     }
 }
 
-void GUI::moveOneStep(int x, int y, int checkableX, int checkableY) {
+void GUI::moveOneStep(int x, int y, int checkableX, int checkableY) {   //Делает ход (перемещает фигуру)
+    figuresOnBoard[checkableX][checkableY] = figuresOnBoard[x][y];      //Перемещаем значение фигуры
+    figuresOnBoard[x][y] = 0;
 
+    playerOnBoard[checkableX][checkableY] = playerOnBoard[x][y];        //Перемещаем значение игрока
+    playerOnBoard[x][y] = 0;
+
+    cellButtons[checkableX][checkableY].setIcon(figureImage[playerOnBoard[checkableX][checkableY]-1]        //Отображаем картинку
+                                                              [figuresOnBoard[checkableX][checkableY]-1]);  //фигуры на новой позиции
+    cellButtons[checkableX][checkableY].setIconSize(cellButtons[x][y].size());
+
+    cellButtons[x][y].setIcon(QIcon(QPixmap("")));      //Убираем картинку фигуры со старой позиции
 }
 
 void GUI::exchangeOfAPawn(int x, int y) {
