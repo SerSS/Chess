@@ -79,10 +79,13 @@ void GUI::startComputeWay() {
 
 
 
-    /*QPixmap pixmap (QDir::currentPath() + "/Image/damaB.png");
+    QPixmap pixmap (QDir::currentPath() + "/Image/damaB.png");
     QIcon icon (pixmap);
+    icon.paint();
+    QSize size (cellWidth, cellHeight);
     cellButtons[first][second].setIcon(icon);
-    cellButtons[first][second].setIconSize(pixmap.rect().size());*/
+    cellButtons[first][second].setIconSize(size);
+    cellButtons[first][second].setStyleSheet("icon-align: right");
 
 }
 
