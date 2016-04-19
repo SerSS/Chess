@@ -76,7 +76,15 @@ void GUI::startComputeWay() {
 
     //QTextStream cout(stdout);
     //cout << QString(QString::number(first)) << "-" << QString(QString::number(second));
-    //cellButtons[first][second].setStyleSheet(QString::fromUtf8("background-color: blue;"));
+
+
+
+
+    QPixmap pixmap ("/home/mrhappyyy/Programming/C++/Projects/Chess/damaB.png");
+    QIcon icon (pixmap);
+    cellButtons[first][second].setIcon(icon);
+    cellButtons[first][second].setIconSize(pixmap.rect().size());
+    //cellButtons[first][second].setStyleSheet(QString::fromUtf8("border-image: url(:damaB.png);"));
 }
 
 void GUI::initialFilling() {        //Начальное размещение фигур на доске
