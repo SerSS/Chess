@@ -22,11 +22,13 @@ void GUI::createGUI() {         //Создание главного окна
             mainLay->addWidget(&cellButtons[i][j], i, j);
 
             cellButtons[i][j].setText(QString::number(i) + QString::number(j));
-            //cellButtons[i][j].setPalette(*palette1);
+            cellButtons[i][j].setPalette(*palette1);
             cellButtons[i][j].setFocusPolicy(Qt::NoFocus);
             cellButtons[i][j].setFixedSize(cellWidth, cellHeight);
 
-            cellButtons[i][j].setStyleSheet(QString::fromUtf8("background-image: url('damaB.png');"));
+            //Тестовое заполнение кнопок картинками
+            cellButtons[i][j].setIcon(pixmap[i%2][j%6]);
+            cellButtons[i][j].setIconSize(cellButtons[i][j].size());
 
 
             if (i % 2 == 0)             //Изменяем цвет клеток на белый и чёрный
@@ -71,20 +73,8 @@ void GUI::startComputeWay() {
         nextY = second;
         checkThePossibilityOfStep(startX, startY, nextX, nextY);
     }
-
-    //checkThePossibilityOfStep();
-
-    //QTextStream cout(stdout);
+    QTextStream cout(stdout);
     //cout << QString(QString::number(first)) << "-" << QString(QString::number(second));
-
-
-
-
-    QPixmap pixmap ("/home/mrhappyyy/Programming/C++/Projects/Chess/damaB.png");
-    QIcon icon (pixmap);
-    cellButtons[first][second].setIcon(icon);
-    cellButtons[first][second].setIconSize(pixmap.rect().size());
-    //cellButtons[first][second].setStyleSheet(QString::fromUtf8("border-image: url(:damaB.png);"));
 }
 
 void GUI::initialFilling() {        //Начальное размещение фигур на доске
