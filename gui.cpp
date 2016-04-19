@@ -22,7 +22,7 @@ void GUI::createGUI() {         //Создание главного окна
             mainLay->addWidget(&cellButtons[i][j], i, j);
 
             cellButtons[i][j].setText(QString::number(i) + QString::number(j));
-            //cellButtons[i][j].setPalette(*palette1);
+            cellButtons[i][j].setPalette(*palette1);
             cellButtons[i][j].setFocusPolicy(Qt::NoFocus);
             cellButtons[i][j].setFixedSize(cellWidth, cellHeight);
 
@@ -79,13 +79,12 @@ void GUI::startComputeWay() {
 
 
 
-    QPixmap pixmap (QDir::currentPath() + "/Image/damaB.png");
+    /*QPixmap pixmap (QDir::currentPath() + "/image/damaB.png");
     QIcon icon (pixmap);
-    icon.paint();
     QSize size (cellWidth, cellHeight);
     cellButtons[first][second].setIcon(icon);
     cellButtons[first][second].setIconSize(size);
-    cellButtons[first][second].setStyleSheet("icon-align: right");
+    cellButtons[first][second].setIcon(QIcon(QPixmap("")));*/
 
 }
 
