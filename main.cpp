@@ -8,7 +8,6 @@ int main(int argc, char *argv[])
     GUI widj;
     ComputeIntelligence comp;
 
-
     widj.createGUI();
 
     return a.exec();
