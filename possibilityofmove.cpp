@@ -132,35 +132,39 @@ bool GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                     }
                 }
                 //проверка ход был сделан по диагонали или нет
-                else if(x < checkableX && y < checkableY){// вниз вправо
-                    for(int i=x+1, j=y+1; i < checkableX; i++, j++){
-                        if(figuresOnBoard[i][j] != 0){
-                            return false;
+                else if((x - checkableX) == (y - checkableY) || (x - checkableX) == ((y - checkableY) * (-1))){
+                    if(x < checkableX && y < checkableY){// вниз вправо
+                        for(int i=x+1, j=y+1; i < checkableX; i++, j++){
+                            if(figuresOnBoard[i][j] != 0){
+                                return false;
+                            }
                         }
                     }
-                }
-                else if(x < checkableX && y > checkableY){// вниз влево
-                    for(int i=x+1, j=y-1; i < checkableX; i++, j--){
-                        if(figuresOnBoard[i][j] != 0){
-                            return false;
+                    else if(x < checkableX && y > checkableY){// вниз влево
+                        for(int i=x+1, j=y-1; i < checkableX; i++, j--){
+                            if(figuresOnBoard[i][j] != 0){
+                                return false;
+                            }
                         }
                     }
-                }
-                else if(x > checkableX && y < checkableY){// вверх вправо
-                    for(int i=x-1, j=y+1; i > checkableX; i--, j++){
-                        if(figuresOnBoard[i][j] != 0){
-                            return false;
+                    else if(x > checkableX && y < checkableY){// вверх вправо
+                        for(int i=x-1, j=y+1; i > checkableX; i--, j++){
+                            if(figuresOnBoard[i][j] != 0){
+                                return false;
+                            }
                         }
                     }
-                }
-                else if(x > checkableX && y > checkableY){// вверх влево
-                    for(int i=x-1, j=y-1; i > checkableX; i--, j--){
-                        if(figuresOnBoard[i][j] != 0){
-                            return false;
+                    else if(x > checkableX && y > checkableY){// вверх влево
+                        for(int i=x-1, j=y-1; i > checkableX; i--, j--){
+                            if(figuresOnBoard[i][j] != 0){
+                                return false;
+                            }
                         }
                     }
-                }
-                else {
+                    else {
+                        return false;
+                    }
+                }else {
                     return false;
                 }
             } else{
