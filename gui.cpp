@@ -58,7 +58,7 @@ void GUI::startComputeWay() {
     int first = (int)buttonText[0] - 48;
     int second = (int)buttonText[1] - 48;
 
-    if(click == 0){     //Если выбираем фигуру которой хотим походить, то записываем координаты  выбранной фигуры
+    if (click == 0 && playerOnBoard[first][second] != 0){     //Если выбираем фигуру которой хотим походить, то записываем координаты  выбранной фигуры
         click = 1;
         startX = first;
         startY = second;
@@ -69,6 +69,9 @@ void GUI::startComputeWay() {
         if (checkThePossibilityOfStep(startX, startY, nextX, nextY)) {
             moveOneStep(startX, startY, nextX, nextY);
         }
+        click = 0;
+    }
+    else {
         click = 0;
     }
     //QTextStream cout(stdout);
