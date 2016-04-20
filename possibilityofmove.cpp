@@ -1,9 +1,8 @@
 #include "mainwindow.h"
 
-void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY){
-    //проверка попытки боя своей фигуры
+bool GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY){
     if (x < 0 || y < 0 || x > 7 || y > 7 || checkableX < 0 || checkableY < 0 || checkableX > 7 || checkableY > 7 || //проверка выхода за розмерность доски
-        playerOnBoard[x][y] == 0 || playerOnBoard[x][y] == playerOnBoard[checkableX][checkableY] || (x==checkableX && y==checkableY)) {
+        playerOnBoard[x][y] == 0 || playerOnBoard[x][y] == playerOnBoard[checkableX][checkableY] || (x==checkableX && y==checkableY)) { //проверка попытки боя своей фигуры
         click =0;
         return false;
     }
@@ -15,13 +14,13 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
             }*/
             if (x == checkableX) {
                 if (checkableY > y) {
-                    for (int i = y; y < checkableY; i++) {
+                    for (int i = y + 1; i < checkableY; i++) {
                         if (figuresOnBoard[x][i] != 0) {
                             return false;
                         }
                     }
                 } else if (checkableY < y) {
-                    for (int i = y; y > checkableY; i--) {
+                    for (int i = y - 1; i > checkableY; i--) {
                         if (figuresOnBoard[x][i] != 0) {
                             return false;
                         }
@@ -31,14 +30,14 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                 }
             } else if (y == checkableY) {
                 if (checkableX > x) {
-                    for (int i = x; x < checkableX; i++) {
-                        if (figuresOnBoard[x][i] != 0) {
+                    for (int i = x + 1; i < checkableX; i++) {
+                        if (figuresOnBoard[i][y] != 0) {
                             return false;
                         }
                     }
                 } else if (checkableX < x) {
-                    for (int i = x; x > checkableX; i--) {
-                        if (figuresOnBoard[x][i] != 0) {
+                    for (int i = x - 1; i > checkableX; i--) {
+                        if (figuresOnBoard[i][y] != 0) {
                             return false;
                         }
                     }
@@ -94,7 +93,7 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                     if (checkableY < y) {//влево
                         for (int i = y - 1; i > checkableY; i--) {//проверка нет ли по пути фигур
                             if (figuresOnBoard[x][i] != 0) {
-                                return;
+                                return false;
                             }
                         }
                         //реализация хода
@@ -102,7 +101,7 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                     } else if (checkableY > y) {//вправо
                         for (int i = y + 1; i < checkableY; i++) {//проверка нет ли по пути фигур
                             if (figuresOnBoard[x][i] != 0) {
-                                return;
+                                return false;
                             }
                         }
                         //реализация хода
@@ -112,7 +111,7 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                     if (checkableX < x) {//вверх
                         for (int i = x - 1; i > checkableX; i--) {//проверка нет ли по пути фигур
                             if (figuresOnBoard[i][y] != 0) {
-                                return;
+                                return false;
                             }
                         }
                         //реализация хода
@@ -120,7 +119,7 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                     } else if (checkableX > x) {//вниз
                         for (int i = x + 1; i < checkableX; i++) {//проверка нет ли по пути фигур
                             if (figuresOnBoard[i][y] != 0) {
-                                return;
+                                return false;
                             }
                         }
                         //реализация хода
@@ -133,28 +132,28 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                     if(x < checkableX && y < checkableY){// вниз вправо
                         for(int i=x, j=y; i < checkableX; i++, j++){
                             if(figuresOnBoard[i][j] != 0){
-                                return;
+                                return false;
                             }
                         }
                     }
                     if(x < checkableX && y > checkableY){// вниз влево
                         for(int i=x, j=y; i < checkableX; i++, j--){
                             if(figuresOnBoard[i][j] != 0){
-                                return;
+                                return false;
                             }
                         }
                     }
                     if(x > checkableX && y < checkableY){// вверх вправо
                         for(int i=x, j=y; i > checkableX; i--, j++){
                             if(figuresOnBoard[i][j] != 0){
-                                return;
+                                return false;
                             }
                         }
                     }
                     if(x > checkableX && y > checkableY){// вверх влево
                         for(int i=x, j=y; i > checkableX; i--, j--){
                             if(figuresOnBoard[i][j] != 0){
-                                return;
+                                return false;
                             }
                         }
                     }

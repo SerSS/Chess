@@ -48,6 +48,7 @@ void GUI::createGUI() {         //Создание главного окна
     mainWidj->show();
 }
 void GUI::startComputeWay() {
+    QTextStream cout(stdout);
     QObject* obj = QObject::sender();
     QPushButton* sendBut = (QPushButton*)obj;
 
@@ -66,7 +67,7 @@ void GUI::startComputeWay() {
         click = 0;      //походить и вызываем проверку возможности этого хода
         nextX = first;
         nextY = second;
-        checkThePossibilityOfStep(startX, startY, nextX, nextY);
+        cout << checkThePossibilityOfStep(startX, startY, nextX, nextY);
     }
     //QTextStream cout(stdout);
     //cout << QString(QString::number(first)) << "-" << QString(QString::number(second));
