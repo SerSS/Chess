@@ -77,14 +77,20 @@ void GUI::initialFilling() {        //Начальное размещение ф
     int k = 7;
     for(int i=0; i<8; i++){
         figuresOnBoard[0][i] = startFilling[i];
-        figuresOnBoard[1][i] = 8;
-        figuresOnBoard[6][i] = 8;
+        figuresOnBoard[1][i] = 6;
+        figuresOnBoard[6][i] = 6;
         figuresOnBoard[7][i] = startFilling[k];
+
+        playerOnBoard[0][i] = 2;
+        playerOnBoard[1][i] = 2;
+        playerOnBoard[6][i] = 1;
+        playerOnBoard[7][i] = 1;
         k--;
     }
     for(int i=2; i<6; i++){
         for(int j=0; j<8; j++){
             figuresOnBoard[i][j] = 0;
+            playerOnBoard[i][j] = 0;
         }
     }
     for(int i=0;i<8;i++){
@@ -92,5 +98,14 @@ void GUI::initialFilling() {        //Начальное размещение ф
             cout << figuresOnBoard[i][j] << " ";
         }
         cout << endl;
+    }
+    for(int i=0; i<8; i++){//Отображаем картинку
+        for(int j=0; j<8; j++){
+            if(playerOnBoard[i][j]<=0 || figuresOnBoard[i][j]<=0) continue;
+            else {
+                cellButtons[i][j].setIcon(figureImage[playerOnBoard[i][j]-1][figuresOnBoard[i][j]-1]);
+                cellButtons[i][j].setIconSize(cellButtons[i][j].size());
+            }
+        }
     }
 }
