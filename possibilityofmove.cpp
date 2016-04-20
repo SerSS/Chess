@@ -49,7 +49,13 @@ bool GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
             }
             break;
         case 2://лошадь
+            if ((checkableX == (x+2) || checkableX == (x-2)) && (checkableY == (y+1) || checkableY == (y-1))) {
 
+            } else if ((checkableX == (x+1) || checkableX == (x-1)) && (checkableY == (y+2) || checkableY == (y-2))) {
+
+            } else {
+                return false;
+            }
             break;
         case 3://офицер
             if (checkableX < 8 && checkableY < 8 && checkableX >= 0 && checkableY >= 0) {
