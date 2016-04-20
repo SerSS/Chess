@@ -3,15 +3,11 @@
 bool GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY){
     if (x < 0 || y < 0 || x > 7 || y > 7 || checkableX < 0 || checkableY < 0 || checkableX > 7 || checkableY > 7 || //проверка выхода за розмерность доски
         playerOnBoard[x][y] == 0 || playerOnBoard[x][y] == playerOnBoard[checkableX][checkableY] || (x==checkableX && y==checkableY)) { //проверка попытки боя своей фигуры
-        click =0;
         return false;
     }
 
     switch (figuresOnBoard[x][y]) {
         case 1://ладья
-            /*if (x != checkableX && y != checkableY) {
-                return false;
-            }*/
             if (x == checkableX) {
                 if (checkableY > y) {
                     for (int i = y + 1; i < checkableY; i++) {
@@ -56,28 +52,28 @@ bool GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                 if((x - checkableX) == (y - checkableY) || (x - checkableX) == ((y - checkableY) * (-1))){//проверка по диагонали он ходит или нет
                     //запускаем проверку нет ли фигур по пути
                     if(x < checkableX && y < checkableY){// вниз вправо
-                        for(int i=x, j=y; i < checkableX; i++, j++){
+                        for(int i=x+1, j=y+1; i < checkableX; i++, j++){
                             if(figuresOnBoard[i][j] != 0){
                                 return false;
                             }
                         }
                     }
                     else if(x < checkableX && y > checkableY){// вниз влево
-                        for(int i=x, j=y; i < checkableX; i++, j--){
+                        for(int i=x+1, j=y-1; i < checkableX; i++, j--){
                             if(figuresOnBoard[i][j] != 0){
                                 return false;
                             }
                         }
                     }
                     else if(x > checkableX && y < checkableY){// вверх вправо
-                        for(int i=x, j=y; i > checkableX; i--, j++){
+                        for(int i=x-1, j=y+1; i > checkableX; i--, j++){
                             if(figuresOnBoard[i][j] != 0){
                                 return false;
                             }
                         }
                     }
                     else if(x > checkableX && y > checkableY){// вверх влево
-                        for(int i=x, j=y; i > checkableX; i--, j--){
+                        for(int i=x-1, j=y-1; i > checkableX; i--, j--){
                             if(figuresOnBoard[i][j] != 0){
                                 return false;
                             }
@@ -86,7 +82,11 @@ bool GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                     else {
                         return false;
                     }
+                }else {
+                    return false;
                 }
+            }else {
+                return false;
             }
             break;
         case 4://дамка
@@ -126,40 +126,39 @@ bool GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                     }
                 }
                 //проверка ход был сделан по диагонали или нет
-                else if((x - checkableX) == (y - checkableY) || (x - checkableX) == ((y - checkableY) * (-1))){
-                    //запускаем проверку нет ли фигур по пути
-                    if(x < checkableX && y < checkableY){// вниз вправо
-                        for(int i=x, j=y; i < checkableX; i++, j++){
-                            if(figuresOnBoard[i][j] != 0){
-                                return false;
-                            }
+                else if(x < checkableX && y < checkableY){// вниз вправо
+                    for(int i=x+1, j=y+1; i < checkableX; i++, j++){
+                        if(figuresOnBoard[i][j] != 0){
+                            return false;
                         }
                     }
-                    if(x < checkableX && y > checkableY){// вниз влево
-                        for(int i=x, j=y; i < checkableX; i++, j--){
-                            if(figuresOnBoard[i][j] != 0){
-                                return false;
-                            }
+                }
+                else if(x < checkableX && y > checkableY){// вниз влево
+                    for(int i=x+1, j=y-1; i < checkableX; i++, j--){
+                        if(figuresOnBoard[i][j] != 0){
+                            return false;
                         }
                     }
-                    if(x > checkableX && y < checkableY){// вверх вправо
-                        for(int i=x, j=y; i > checkableX; i--, j++){
-                            if(figuresOnBoard[i][j] != 0){
-                                return false;
-                            }
+                }
+                else if(x > checkableX && y < checkableY){// вверх вправо
+                    for(int i=x-1, j=y+1; i > checkableX; i--, j++){
+                        if(figuresOnBoard[i][j] != 0){
+                            return false;
                         }
                     }
-                    if(x > checkableX && y > checkableY){// вверх влево
-                        for(int i=x, j=y; i > checkableX; i--, j--){
-                            if(figuresOnBoard[i][j] != 0){
-                                return false;
-                            }
+                }
+                else if(x > checkableX && y > checkableY){// вверх влево
+                    for(int i=x-1, j=y-1; i > checkableX; i--, j--){
+                        if(figuresOnBoard[i][j] != 0){
+                            return false;
                         }
                     }
                 }
                 else {
                     return false;
                 }
+            } else{
+                return false;
             }
             break;
         case 5://король
@@ -175,8 +174,9 @@ bool GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
         case 6://пешка
 
             break;
+    default:
+        return false;
     }
-    moveOneStep(x, y, checkableX, checkableY);
     return true;
 }
 
@@ -191,7 +191,7 @@ void GUI::moveOneStep(int x, int y, int checkableX, int checkableY) {   //Дел
                                                               [figuresOnBoard[checkableX][checkableY]-1]);  //фигуры на новой позиции
     cellButtons[checkableX][checkableY].setIconSize(cellButtons[x][y].size());
 
-    cellButtons[x][y].setIcon(QIcon(QPixmap("")));      //Убираем картинку фигуры со старой позиции
+    //cellButtons[x][y].setIcon(QIcon(QPixmap("")));      //Убираем картинку фигуры со старой позиции
 }
 
 void GUI::exchangeOfAPawn(int x, int y) {
