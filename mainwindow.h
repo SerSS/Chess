@@ -45,7 +45,8 @@ public:
                             QPixmap(QDir::currentPath() + "/image/oficerB.png"),
                             QPixmap(QDir::currentPath() + "/image/damaB.png"),
                             QPixmap(QDir::currentPath() + "/image/korolB.png"),
-                            QPixmap(QDir::currentPath() + "/image/peshkaB.png")}};
+                            QPixmap(QDir::currentPath() + "/image/peshkaB.png")}
+                        };
 
     int figuresOnBoard[8][8];
     int playerOnBoard[8][8];
