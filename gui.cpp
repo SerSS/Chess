@@ -58,16 +58,21 @@ void GUI::startComputeWay() {
     int first = (int)buttonText[0] - 48;
     int second = (int)buttonText[1] - 48;
 
-    if(click == 0){     //Если выбираем фигуру которой хотим походить, то записываем координаты  выбранной фигуры
+    if (click == 0 && playerOnBoard[first][second] != 0){     //Если выбираем фигуру которой хотим походить, то записываем координаты  выбранной фигуры
         click = 1;
         startX = first;
         startY = second;
     }
     else if(click == 1){     //Записываем координаты клетки на которую хотим
-        click = 0;      //походить и вызываем проверку возможности этого хода
-        nextX = first;
+        nextX = first;          //походить и вызываем проверку возможности этого хода
         nextY = second;
-        cout << checkThePossibilityOfStep(startX, startY, nextX, nextY);
+        if (checkThePossibilityOfStep(startX, startY, nextX, nextY)) {
+            moveOneStep(startX, startY, nextX, nextY);
+        }
+        click = 0;
+    }
+    else {
+        click = 0;
     }
     //QTextStream cout(stdout);
     //cout << QString(QString::number(first)) << "-" << QString(QString::number(second));
