@@ -1,58 +1,13 @@
 #include "mainwindow.h"
 
 bool GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY){
-<<<<<<< 81151cf5e096bd1fb53720269b9b22dddd4bf0c6
-    if (x < 0 || y < 0 || x > 7 || y > 7 || checkableX < 0 || checkableY < 0 || checkableX > 7 || checkableY > 7 || //проверка выхода за розмерность доски
-        playerOnBoard[x][y] == 0 || playerOnBoard[x][y] == playerOnBoard[checkableX][checkableY] || (x==checkableX && y==checkableY)) { //проверка попытки боя своей фигуры
-        click =0;
-        return false;
-=======
     //проверка попытки боя своей фигуры
     if (playerOnBoard[x][y] == 0 || playerOnBoard[x][y] == playerOnBoard[checkableX][checkableY] || (x==checkableX && y==checkableY)) {
-<<<<<<< Updated upstream
         return;
-=======
-        click =0;
-        return false;
->>>>>>> Stashed changes
->>>>>>> adebe51aef93e1cbb03a49426659406973f7d1b9
     }
 
     switch (figuresOnBoard[x][y]) {
         case 1://ладья
-<<<<<<< 81151cf5e096bd1fb53720269b9b22dddd4bf0c6
-            /*if (x != checkableX && y != checkableY) {
-                return false;
-            }*/
-            if (x == checkableX) {
-                if (checkableY > y) {
-                    for (int i = y + 1; i < checkableY; i++) {
-                        if (figuresOnBoard[x][i] != 0) {
-                            return false;
-                        }
-                    }
-                } else if (checkableY < y) {
-                    for (int i = y - 1; i > checkableY; i--) {
-                        if (figuresOnBoard[x][i] != 0) {
-                            return false;
-                        }
-                    }
-                } else {
-                    return false;
-                }
-            } else if (y == checkableY) {
-                if (checkableX > x) {
-                    for (int i = x + 1; i < checkableX; i++) {
-                        if (figuresOnBoard[i][y] != 0) {
-                            return false;
-                        }
-                    }
-                } else if (checkableX < x) {
-                    for (int i = x - 1; i > checkableX; i--) {
-                        if (figuresOnBoard[i][y] != 0) {
-                            return false;
-                        }
-=======
             if (checkableX < 8 && checkableY < 8 && checkableX >= 0 && checkableY >= 0) {
                 if (checkableX == x) {
                     if (checkableY < y) {//влево
@@ -88,20 +43,12 @@ bool GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                             }
                         }
                         //реализация хода
-
->>>>>>> adebe51aef93e1cbb03a49426659406973f7d1b9
+                        moveOneStep(x, y, checkableX, checkableY);
                     }
-                } else {
-                    return false;
                 }
-            } else {
-                return false;
             }
             break;
         case 2://лошадь
-<<<<<<< 81151cf5e096bd1fb53720269b9b22dddd4bf0c6
-
-=======
             if (checkableX < 8 && checkableY < 8 && checkableX >= 0 && checkableY >= 0) {
                 if (checkableX == (x-2)) {//вверх
                     if (checkableY == (y-1)) {//влево
@@ -137,7 +84,6 @@ bool GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                     }
                 }
             }
->>>>>>> adebe51aef93e1cbb03a49426659406973f7d1b9
             break;
         case 3://офицер
             if (checkableX < 8 && checkableY < 8 && checkableX >= 0 && checkableY >= 0) {
@@ -258,13 +204,6 @@ bool GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                 }
             }
             break;
-<<<<<<< 81151cf5e096bd1fb53720269b9b22dddd4bf0c6
-        case 6://пешка
-
-            break;
-    }
-    moveOneStep(x, y, checkableX, checkableY);
-=======
         case 8://пешка
             if (playerOnBoard[x][y] == 1) {//белые
                 if (checkableX < x) {//не пытаются ли пойти назад
@@ -339,8 +278,6 @@ bool GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
             }
             break;
     }
->>>>>>> adebe51aef93e1cbb03a49426659406973f7d1b9
-    return true;
 }
 
 void GUI::moveOneStep(int x, int y, int checkableX, int checkableY) {   //Делает ход (перемещает фигуру)
