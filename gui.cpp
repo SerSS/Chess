@@ -58,7 +58,28 @@ void GUI::startComputeWay() {
     int first = (int)buttonText[0] - 48;
     int second = (int)buttonText[1] - 48;
 
-    if (click == 0 && playerOnBoard[first][second] != 0){     //Если выбираем фигуру которой хотим походить, то записываем координаты  выбранной фигуры
+    if (click == 0 && playerWhoMakesMove == 0 && playerOnBoard[first][second] != 0) {
+        click = 1;
+        playerWhoMakesMove = playerOnBoard[first][second];
+        startX = first;
+        startY = second;
+    } else if (playerOnBoard[first][second] != 0 && click == 1 && playerOnBoard[first][second] == playerWhoMakesMove) {
+        startX = first;
+        startY = second;
+    } else if (click == 1 && playerWhoMakesMove != 0) {
+        nextX = first;
+        nextY = second;
+        if (checkThePossibilityOfStep(startX, startY, nextX, nextY)) {
+            moveOneStep(startX, startY, nextX, nextY);
+            click = 0;
+            playerWhoMakesMove = 0;
+        }
+    } else {
+        click = 0;
+        playerWhoMakesMove = 0;
+    }
+
+    /*if (click == 0 && playerOnBoard[first][second] != 0){     //Если выбираем фигуру которой хотим походить, то записываем координаты  выбранной фигуры
         click = 1;
         startX = first;
         startY = second;
@@ -67,13 +88,13 @@ void GUI::startComputeWay() {
         nextX = first;          //походить и вызываем проверку возможности этого хода
         nextY = second;
         if (checkThePossibilityOfStep(startX, startY, nextX, nextY)) {
-            moveOneStep(startX, startY, nextX, nextY);
+            moveleOneStep(startX, startY, nextX, nextY);
         }
         click = 0;
     }
     else {
         click = 0;
-    }
+    }*/
     //QTextStream cout(stdout);
     //cout << QString(QString::number(first)) << "-" << QString(QString::number(second));
 }
