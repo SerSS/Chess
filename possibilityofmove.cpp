@@ -3,6 +3,7 @@
 bool GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY){
     //проверка попытки боя своей фигуры
     if (playerOnBoard[x][y] == 0 || playerOnBoard[x][y] == playerOnBoard[checkableX][checkableY] || (x==checkableX && y==checkableY)) {
+        click =0;
         return;
     }
 
@@ -204,7 +205,7 @@ bool GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                 }
             }
             break;
-        case 8://пешка
+        case 6://пешка
             if (playerOnBoard[x][y] == 1) {//белые
                 if (checkableX < x) {//не пытаются ли пойти назад
                     if (y == checkableY &&      //проверка ход или бой
