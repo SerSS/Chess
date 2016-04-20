@@ -58,7 +58,7 @@ public:
     int nextY = 0;          //
 
     void createGUI();
-    void checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY);
+    bool checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY);
     void initialFilling();
     void moveOneStep(int x, int y, int checkableX, int checkableY);
     void exchangeOfAPawn(int x, int y);
