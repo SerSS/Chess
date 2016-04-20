@@ -191,7 +191,7 @@ void GUI::moveOneStep(int x, int y, int checkableX, int checkableY) {   //Дел
                                                               [figuresOnBoard[checkableX][checkableY]-1]);  //фигуры на новой позиции
     cellButtons[checkableX][checkableY].setIconSize(cellButtons[x][y].size());
 
-    //cellButtons[x][y].setIcon(QIcon(QPixmap("")));      //Убираем картинку фигуры со старой позиции
+    cellButtons[x][y].setIcon(QIcon(QPixmap("")));      //Убираем картинку фигуры со старой позиции
 }
 
 void GUI::exchangeOfAPawn(int x, int y) {
