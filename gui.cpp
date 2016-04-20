@@ -67,7 +67,7 @@ void GUI::startComputeWay() {
         startX = first;
         startY = second;
     } else if (click == 1 && playerWhoMakesMove != 0) {
-        nextX = first;          //походить и вызываем проверку возможности этого хода
+        nextX = first;
         nextY = second;
         if (checkThePossibilityOfStep(startX, startY, nextX, nextY)) {
             moveOneStep(startX, startY, nextX, nextY);
