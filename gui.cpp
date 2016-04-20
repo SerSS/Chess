@@ -26,9 +26,6 @@ void GUI::createGUI() {         //Создание главного окна
             cellButtons[i][j].setFocusPolicy(Qt::NoFocus);
             cellButtons[i][j].setFixedSize(cellWidth, cellHeight);
 
-            cellButtons[i][j].setStyleSheet(QString::fromUtf8("background-image: url('damaB.png');"));
-
-
             if (i % 2 == 0)             //Изменяем цвет клеток на белый и чёрный
             {
                 if (j % 2 == 0) cellButtons[i][j].setStyleSheet(QString::fromUtf8(
@@ -65,27 +62,14 @@ void GUI::startComputeWay() {
         startX = first;
         startY = second;
     }
-    if(click == 1){     //Записываем координаты клетки на которую хотим
+    else if(click == 1){     //Записываем координаты клетки на которую хотим
         click = 0;      //походить и вызываем проверку возможности этого хода
         nextX = first;
         nextY = second;
         checkThePossibilityOfStep(startX, startY, nextX, nextY);
     }
-
-    //checkThePossibilityOfStep();
-
     //QTextStream cout(stdout);
     //cout << QString(QString::number(first)) << "-" << QString(QString::number(second));
-
-
-
-    /*QPixmap pixmap (QDir::currentPath() + "/image/damaB.png");
-    QIcon icon (pixmap);
-    QSize size (cellWidth, cellHeight);
-    cellButtons[first][second].setIcon(icon);
-    cellButtons[first][second].setIconSize(size);
-    cellButtons[first][second].setIcon(QIcon(QPixmap("")));*/
-
 }
 
 void GUI::initialFilling() {        //Начальное размещение фигур на доске
@@ -93,14 +77,20 @@ void GUI::initialFilling() {        //Начальное размещение ф
     int k = 7;
     for(int i=0; i<8; i++){
         figuresOnBoard[0][i] = startFilling[i];
-        figuresOnBoard[1][i] = 8;
-        figuresOnBoard[6][i] = 8;
+        figuresOnBoard[1][i] = 6;
+        figuresOnBoard[6][i] = 6;
         figuresOnBoard[7][i] = startFilling[k];
+
+        playerOnBoard[0][i] = 2;
+        playerOnBoard[1][i] = 2;
+        playerOnBoard[6][i] = 1;
+        playerOnBoard[7][i] = 1;
         k--;
     }
     for(int i=2; i<6; i++){
         for(int j=0; j<8; j++){
             figuresOnBoard[i][j] = 0;
+            playerOnBoard[i][j] = 0;
         }
     }
     for(int i=0;i<8;i++){
@@ -108,5 +98,14 @@ void GUI::initialFilling() {        //Начальное размещение ф
             cout << figuresOnBoard[i][j] << " ";
         }
         cout << endl;
+    }
+    for(int i=0; i<8; i++){//Отображаем картинку
+        for(int j=0; j<8; j++){
+            if(playerOnBoard[i][j]<=0 || figuresOnBoard[i][j]<=0) continue;
+            else {
+                cellButtons[i][j].setIcon(figureImage[playerOnBoard[i][j]-1][figuresOnBoard[i][j]-1]);
+                cellButtons[i][j].setIconSize(cellButtons[i][j].size());
+            }
+        }
     }
 }
