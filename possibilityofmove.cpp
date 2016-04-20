@@ -3,9 +3,9 @@
 void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY){
     //проверка попытки боя своей фигуры
     if (playerOnBoard[x][y] == 0 || playerOnBoard[x][y] == playerOnBoard[checkableX][checkableY] || (x==checkableX && y==checkableY)) {
+        click =0;
         return;
     }
-
 
     switch (figuresOnBoard[x][y]) {
         case 1://ладья
@@ -205,7 +205,7 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
                 }
             }
             break;
-        case 8://пешка
+        case 6://пешка
             if (playerOnBoard[x][y] == 1) {//белые
                 if (checkableX < x) {//не пытаются ли пойти назад
                     if (y == checkableY &&      //проверка ход или бой
@@ -281,8 +281,18 @@ void GUI::checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY
     }
 }
 
-void GUI::moveOneStep(int x, int y, int checkableX, int checkableY) {
+void GUI::moveOneStep(int x, int y, int checkableX, int checkableY) {   //Делает ход (перемещает фигуру)
+    figuresOnBoard[checkableX][checkableY] = figuresOnBoard[x][y];      //Перемещаем значение фигуры
+    figuresOnBoard[x][y] = 0;
 
+    playerOnBoard[checkableX][checkableY] = playerOnBoard[x][y];        //Перемещаем значение игрока
+    playerOnBoard[x][y] = 0;
+
+    cellButtons[checkableX][checkableY].setIcon(figureImage[playerOnBoard[checkableX][checkableY]-1]        //Отображаем картинку
+                                                              [figuresOnBoard[checkableX][checkableY]-1]);  //фигуры на новой позиции
+    cellButtons[checkableX][checkableY].setIconSize(cellButtons[x][y].size());
+
+    cellButtons[x][y].setIcon(QIcon(QPixmap("")));      //Убираем картинку фигуры со старой позиции
 }
 
 void GUI::exchangeOfAPawn(int x, int y) {
