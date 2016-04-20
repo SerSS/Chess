@@ -64,16 +64,12 @@ void GUI::startComputeWay() {
         startY = second;
     }
     else if(click == 1){     //Записываем координаты клетки на которую хотим
-        click = 0;      //походить и вызываем проверку возможности этого хода
-        nextX = first;
+        nextX = first;          //походить и вызываем проверку возможности этого хода
         nextY = second;
         if (checkThePossibilityOfStep(startX, startY, nextX, nextY)) {
             moveOneStep(startX, startY, nextX, nextY);
-            click = 0;
         }
-        else {
-            click = 1;
-        }
+        click = 0;
     }
     //QTextStream cout(stdout);
     //cout << QString(QString::number(first)) << "-" << QString(QString::number(second));
