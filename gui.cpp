@@ -63,11 +63,30 @@ void GUI::startComputeWay() {
         startX = first;
         startY = second;
     }
+<<<<<<< 81151cf5e096bd1fb53720269b9b22dddd4bf0c6
     else if(click == 1){     //Записываем координаты клетки на которую хотим
+=======
+<<<<<<< Updated upstream
+    if(click == 1){     //Записываем координаты клетки на которую хотим
+>>>>>>> adebe51aef93e1cbb03a49426659406973f7d1b9
         click = 0;      //походить и вызываем проверку возможности этого хода
         nextX = first;
+=======
+    else if(click == 1){     //Записываем координаты клетки на которую хотим
+        nextX = first;      //походить и вызываем проверку возможности этого хода
+>>>>>>> Stashed changes
         nextY = second;
+<<<<<<< 81151cf5e096bd1fb53720269b9b22dddd4bf0c6
         cout << checkThePossibilityOfStep(startX, startY, nextX, nextY);
+=======
+        if (checkThePossibilityOfStep(startX, startY, nextX, nextY)) {
+            moveOneStep(startX, startY, nextX, nextY);
+            click = 0;
+        }
+        else {
+            click = 1;
+        }
+>>>>>>> adebe51aef93e1cbb03a49426659406973f7d1b9
     }
     //QTextStream cout(stdout);
     //cout << QString(QString::number(first)) << "-" << QString(QString::number(second));
