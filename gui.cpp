@@ -58,7 +58,28 @@ void GUI::startComputeWay() {
     int first = (int)buttonText[0] - 48;
     int second = (int)buttonText[1] - 48;
 
-    if (click == 0 && playerWhoMakesMove == 0 && playerOnBoard[first][second] != 0) {
+    if (click == 0 && playerWhoMakesMove == playerOnBoard[first][second]) {
+        click = 1;
+        startX = first;
+        startY = second;
+    } else if (click == 1 && playerWhoMakesMove == playerOnBoard[first][second]) {
+        startX = first;
+        startY = second;
+    } else if (click == 1 && playerWhoMakesMove != playerOnBoard[first][second] && playerWhoMakesMove != 0) {
+        nextX = first;
+        nextY = second;
+        if (checkThePossibilityOfStep(startX, startY, nextX, nextY)) {
+            moveOneStep(startX, startY, nextX, nextY);
+            click = 0;
+            if (playerWhoMakesMove == 1) {
+                playerWhoMakesMove = 2;
+            } else if (playerWhoMakesMove == 2) {
+                playerWhoMakesMove = 1;
+            }
+        }
+    }
+
+    /*if (click == 0 && playerWhoMakesMove == 0 && playerOnBoard[first][second] != 0) {
         click = 1;
         playerWhoMakesMove = playerOnBoard[first][second];
         startX = first;
@@ -77,7 +98,7 @@ void GUI::startComputeWay() {
     } else {
         click = 0;
         playerWhoMakesMove = 0;
-    }
+    }*/
 
     /*if (click == 0 && playerOnBoard[first][second] != 0){     //Если выбираем фигуру которой хотим походить, то записываем координаты  выбранной фигуры
         click = 1;
