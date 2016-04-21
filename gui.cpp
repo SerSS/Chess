@@ -141,12 +141,12 @@ void GUI::initialFilling() {        //Начальное размещение ф
             playerOnBoard[i][j] = 0;
         }
     }
-    for(int i=0;i<8;i++){
+    /*for(int i=0;i<8;i++){
         for(int j=0;j<8;j++){
             cout << figuresOnBoard[i][j] << " ";
         }
         cout << endl;
-    }
+    }*/
     for(int i=0; i<8; i++){//Отображаем картинку
         for(int j=0; j<8; j++){
             if(playerOnBoard[i][j]<=0 || figuresOnBoard[i][j]<=0) continue;
