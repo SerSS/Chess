@@ -23,13 +23,9 @@
 const int cellWidth = 50;
 const int cellHeight = 50;
 
-
-class GUI : public QObject  {
-    Q_OBJECT
+class AllArrays : public QObject {
 
 public:
-    QWidget* mainWidj;
-    QGridLayout* mainLay;
     QPushButton cellButtons[8][8];
 
     QIcon figureImage[2][6] = {{             //Массив с обьектами изображений фигур
@@ -50,6 +46,15 @@ public:
     int figuresOnBoard[8][8];
     int playerOnBoard[8][8];
     int startFilling[8] = { 1, 2, 3, 4, 5, 3, 2, 1};        //Начальная расстановка фигур
+};
+
+class GUI : public QObject  {
+    Q_OBJECT
+
+public:
+    AllArrays arr;
+    QWidget* mainWidj;
+    QGridLayout* mainLay;
 
     int playerWhoMakesMove = 1; //игрок который делает ход, первым ходят белые
     int click = 0;          //Отвечает за распознавание выбора начальнойпозиции или позиции на которую ходим
@@ -57,6 +62,7 @@ public:
     int startY = 0;         //
     int nextX = 0;          //Координаты клетки на которую хотим походить
     int nextY = 0;          //
+    int idComputer;
 
     void createGUI();
     bool checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY);
