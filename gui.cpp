@@ -1,6 +1,13 @@
 #include "mainwindow.h"
 
 void GUI::createGUI() {         //Создание главного окна
+    idComputer = 1;
+    for(int i=0; i<8; i++){
+        for(int j=0; j<8; j++){
+
+        }
+    }
+
     mainWidj = new QWidget;
     mainLay = new QGridLayout;
 
@@ -19,29 +26,29 @@ void GUI::createGUI() {         //Создание главного окна
 
     for(int i=0; i<8; i++){         //Добавление кнопок на главное окно
         for(int j=0; j<8; j++){
-            mainLay->addWidget(&cellButtons[i][j], i, j);
+            mainLay->addWidget(&arr.cellButtons[i][j], i, j);
 
-            cellButtons[i][j].setText(QString::number(i) + QString::number(j));
-            cellButtons[i][j].setPalette(*palette1);
-            cellButtons[i][j].setFocusPolicy(Qt::NoFocus);
-            cellButtons[i][j].setFixedSize(cellWidth, cellHeight);
+            arr.cellButtons[i][j].setText(QString::number(i) + QString::number(j));
+            arr.cellButtons[i][j].setPalette(*palette1);
+            arr.cellButtons[i][j].setFocusPolicy(Qt::NoFocus);
+            arr.cellButtons[i][j].setFixedSize(cellWidth, cellHeight);
 
             if (i % 2 == 0)             //Изменяем цвет клеток на белый и чёрный
             {
-                if (j % 2 == 0) cellButtons[i][j].setStyleSheet(QString::fromUtf8(
+                if (j % 2 == 0) arr.cellButtons[i][j].setStyleSheet(QString::fromUtf8(
                                                                     "background-color: black;"));
-                else cellButtons[i][j].setStyleSheet(QString::fromUtf8(
+                else arr.cellButtons[i][j].setStyleSheet(QString::fromUtf8(
                                                          "background-color: white;"));
             }
             else {
-                if (j % 2 == 0) cellButtons[i][j].setStyleSheet(QString::fromUtf8(
+                if (j % 2 == 0) arr.cellButtons[i][j].setStyleSheet(QString::fromUtf8(
                                                                     "background-color: white;"));
-                else cellButtons[i][j].setStyleSheet(QString::fromUtf8(
+                else arr.cellButtons[i][j].setStyleSheet(QString::fromUtf8(
                                                          "background-color: black;"));
             }
 
-            cellButtons[i][j].connect(&cellButtons[i][j], SIGNAL(clicked()), this, SLOT(startComputeWay()));
-            cellButtons[i][j].show();
+            arr.cellButtons[i][j].connect(&arr.cellButtons[i][j], SIGNAL(clicked()), this, SLOT(startComputeWay()));
+            arr.cellButtons[i][j].show();
         }
     }
     initialFilling();
@@ -58,12 +65,12 @@ void GUI::startComputeWay() {
     int first = (int)buttonText[0] - 48;
     int second = (int)buttonText[1] - 48;
 
-    if (click == 0 && playerWhoMakesMove == 0 && playerOnBoard[first][second] != 0) {
+    if (click == 0 && playerWhoMakesMove == 0 && arr.playerOnBoard[first][second] != 0 && playerWhoMakesMove != idComputer) {
         click = 1;
-        playerWhoMakesMove = playerOnBoard[first][second];
+        playerWhoMakesMove = arr.playerOnBoard[first][second];
         startX = first;
         startY = second;
-    } else if (playerOnBoard[first][second] != 0 && click == 1 && playerOnBoard[first][second] == playerWhoMakesMove) {
+    } else if (arr.playerOnBoard[first][second] != 0 && click == 1 && arr.playerOnBoard[first][second] == playerWhoMakesMove) {
         startX = first;
         startY = second;
     } else if (click == 1 && playerWhoMakesMove != 0) {
@@ -79,7 +86,7 @@ void GUI::startComputeWay() {
         playerWhoMakesMove = 0;
     }
 
-    /*if (click == 0 && playerOnBoard[first][second] != 0){     //Если выбираем фигуру которой хотим походить, то записываем координаты  выбранной фигуры
+    /*if (click == 0 && arr.playerOnBoard[first][second] != 0){     //Если выбираем фигуру которой хотим походить, то записываем координаты  выбранной фигуры
         click = 1;
         startX = first;
         startY = second;
@@ -103,35 +110,35 @@ void GUI::initialFilling() {        //Начальное размещение ф
     QTextStream cout(stdout);
     int k = 7;
     for(int i=0; i<8; i++){
-        figuresOnBoard[0][i] = startFilling[i];
-        figuresOnBoard[1][i] = 6;
-        figuresOnBoard[6][i] = 6;
-        figuresOnBoard[7][i] = startFilling[k];
+        arr.figuresOnBoard[0][i] = arr.startFilling[i];
+        arr.figuresOnBoard[1][i] = 6;
+        arr.figuresOnBoard[6][i] = 6;
+        arr.figuresOnBoard[7][i] = arr.startFilling[k];
 
-        playerOnBoard[0][i] = 2;
-        playerOnBoard[1][i] = 2;
-        playerOnBoard[6][i] = 1;
-        playerOnBoard[7][i] = 1;
+        arr.playerOnBoard[0][i] = 2;
+        arr.playerOnBoard[1][i] = 2;
+        arr.playerOnBoard[6][i] = 1;
+        arr.playerOnBoard[7][i] = 1;
         k--;
     }
     for(int i=2; i<6; i++){
         for(int j=0; j<8; j++){
-            figuresOnBoard[i][j] = 0;
-            playerOnBoard[i][j] = 0;
+            arr.figuresOnBoard[i][j] = 0;
+            arr.playerOnBoard[i][j] = 0;
         }
     }
     for(int i=0;i<8;i++){
         for(int j=0;j<8;j++){
-            cout << figuresOnBoard[i][j] << " ";
+            cout << arr.figuresOnBoard[i][j] << " ";
         }
         cout << endl;
     }
     for(int i=0; i<8; i++){//Отображаем картинку
         for(int j=0; j<8; j++){
-            if(playerOnBoard[i][j]<=0 || figuresOnBoard[i][j]<=0) continue;
+            if(arr.playerOnBoard[i][j]<=0 || arr.figuresOnBoard[i][j]<=0) continue;
             else {
-                cellButtons[i][j].setIcon(figureImage[playerOnBoard[i][j]-1][figuresOnBoard[i][j]-1]);
-                cellButtons[i][j].setIconSize(cellButtons[i][j].size());
+                arr.cellButtons[i][j].setIcon(arr.figureImage[arr.playerOnBoard[i][j]-1][arr.figuresOnBoard[i][j]-1]);
+                arr.cellButtons[i][j].setIconSize(arr.cellButtons[i][j].size());
             }
         }
     }
