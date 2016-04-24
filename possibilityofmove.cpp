@@ -277,3 +277,89 @@ void GUI::moveOneStep(int x, int y, int checkableX, int checkableY) {   //Дел
 void GUI::exchangeOfAPawn(int x, int y) {
 
 }
+
+void GUI::allPossibelMove(int x, int y, int figure) {
+    arr.counterWhereMove = 0;
+    switch (figure) {
+        case 1:     //ладья
+
+            break;
+        case 2:     //лошадь
+
+            break;
+        case 3:     //офицер
+            for (int i = x + 1, j = y + 1; i < 8 && j < 8; i++, j++) {
+                arr.whereMove[arr.counterWhereMove][0] = i;
+                arr.whereMove[arr.counterWhereMove][1] = j;
+                arr.counterWhereMove ++;
+                if (arr.playerOnBoard[i][j] != 0) {
+                    break;
+                }
+            }
+            for (int i = x - 1, j = y - 1; i >= 0 && j >= 0; i--, j--) {
+                arr.whereMove[arr.counterWhereMove][0] = i;
+                arr.whereMove[arr.counterWhereMove][1] = j;
+                arr.counterWhereMove ++;
+                if (arr.playerOnBoard[i][j] != 0) {
+                    break;
+                }
+            }
+            for (int i = x - 1, j = y + 1; i >= 0 && j < 8; i--, j++) {
+                arr.whereMove[arr.counterWhereMove][0] = i;
+                arr.whereMove[arr.counterWhereMove][1] = j;
+                arr.counterWhereMove ++;
+                if (arr.playerOnBoard[i][j] != 0) {
+                    break;
+                }
+            }
+            for (int i = x + 1, j = y - 1; i < 8 && j >= 0; i++, j--) {
+                arr.whereMove[arr.counterWhereMove][0] = i;
+                arr.whereMove[arr.counterWhereMove][1] = j;
+                arr.counterWhereMove ++;
+                if (arr.playerOnBoard[i][j] != 0) {
+                    break;
+                }
+            }
+            break;
+        case 4:     //дамка
+        for (int i = x + 1, j = y + 1; i < 8 && j < 8; i++, j++) {
+            arr.whereMove[arr.counterWhereMove][0] = i;
+            arr.whereMove[arr.counterWhereMove][1] = j;
+            arr.counterWhereMove ++;
+            if (arr.playerOnBoard[i][j] != 0) {
+                break;
+            }
+        }
+        for (int i = x - 1, j = y - 1; i >= 0 && j >= 0; i--, j--) {
+            arr.whereMove[arr.counterWhereMove][0] = i;
+            arr.whereMove[arr.counterWhereMove][1] = j;
+            arr.counterWhereMove ++;
+            if (arr.playerOnBoard[i][j] != 0) {
+                break;
+            }
+        }
+        for (int i = x - 1, j = y + 1; i >= 0 && j < 8; i--, j++) {
+            arr.whereMove[arr.counterWhereMove][0] = i;
+            arr.whereMove[arr.counterWhereMove][1] = j;
+            arr.counterWhereMove ++;
+            if (arr.playerOnBoard[i][j] != 0) {
+                break;
+            }
+        }
+        for (int i = x + 1, j = y - 1; i < 8 && j >= 0; i++, j--) {
+            arr.whereMove[arr.counterWhereMove][0] = i;
+            arr.whereMove[arr.counterWhereMove][1] = j;
+            arr.counterWhereMove ++;
+            if (arr.playerOnBoard[i][j] != 0) {
+                break;
+            }
+        }
+            break;
+        case 5:     //король
+
+            break;
+        case 6:     //пешка
+
+            break;
+    }
+}

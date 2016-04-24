@@ -10,7 +10,6 @@ class ComputeIntelligence : public QObject  {
 public:
     GUI gui;
     AllArrays* arr = &gui.arr;
-    int unwantedMove[8][8];
 
     void findDangerCell();
     int priceFigure(int x, int y);
