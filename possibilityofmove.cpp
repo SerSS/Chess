@@ -279,7 +279,7 @@ void GUI::exchangeOfAPawn(int x, int y) {
 }
 
 
-void GUI::allPossibelMove(int x, int y, int figure) {
+void GUI::allPossibleMove(int x, int y, int figure) {
     arr.counterWhereMove = 0;
     switch(figure) {
         case 1:     //ладья
@@ -354,7 +354,7 @@ void GUI::allPossibelMove(int x, int y, int figure) {
             }
             break;
         case 4:     //дамка
-            for (int i = x + 1, j = y + 1; i < 8 && j < 8; i++, j++) {
+            for (int i = x + 1, j = y + 1; i < 8 && j < 8; i++, j++) { //взято у офицера
                 arr.whereMove[arr.counterWhereMove][0] = i;
                 arr.whereMove[arr.counterWhereMove][1] = j;
                 arr.counterWhereMove ++;
@@ -383,6 +383,39 @@ void GUI::allPossibelMove(int x, int y, int figure) {
                 arr.whereMove[arr.counterWhereMove][1] = j;
                 arr.counterWhereMove ++;
                 if (arr.playerOnBoard[i][j] != 0) {
+                    break;
+                }
+            }
+
+            for(int i = x + 1; i < 8; i++){//взято у ладьи
+                arr.whereMove[arr.counterWhereMove][0] = i;
+                arr.whereMove[arr.counterWhereMove][1] = y;
+                arr.counterWhereMove++;
+                if(arr.playerOnBoard[i][y] != 0){
+                    break;
+                }
+            }
+            for(int i = x - 1; i >= 0; i--){
+                arr.whereMove[arr.counterWhereMove][0] = i;
+                arr.whereMove[arr.counterWhereMove][1] = y;
+                arr.counterWhereMove++;
+                if(arr.playerOnBoard[i][y] != 0){
+                    break;
+                }
+            }
+            for(int i = y + 1; i < 8; i++){
+                arr.whereMove[arr.counterWhereMove][0] = x;
+                arr.whereMove[arr.counterWhereMove][1] = i;
+                arr.counterWhereMove++;
+                if(arr.playerOnBoard[x][i] != 0){
+                    break;
+                }
+            }
+            for(int i = y - 1; i >= 0; i--){
+                arr.whereMove[arr.counterWhereMove][0] = x;
+                arr.whereMove[arr.counterWhereMove][1] = i;
+                arr.counterWhereMove++;
+                if(arr.playerOnBoard[x][i] != 0){
                     break;
                 }
             }
