@@ -23,13 +23,8 @@
 const int cellWidth = 50;
 const int cellHeight = 50;
 
-<<<<<<< HEAD
-
 class AllArrays : public QObject {
     Q_OBJECT
-=======
-class AllArrays : public QObject {
->>>>>>> Yura
 
 public:
     QPushButton cellButtons[8][8];
@@ -71,7 +66,7 @@ public:
     int startY = 0;         //
     int nextX = 0;          //Координаты клетки на которую хотим походить
     int nextY = 0;          //
-    int idComputer;
+    int idComputer = 1;
 
     void createGUI();
     bool checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY);
