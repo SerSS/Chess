@@ -1,6 +1,9 @@
 #include "computer_intelligence.h"
 
 void ComputeIntelligence::findDangerCell() {
+    //1-фигура пользователя,2-фигура компьютера,  кратное 5-опасный ход(попадает под бой),
+    //кратное 7-фигура пользователя(которая стоит под защитой другой фигуры),
+    //кратное 8-фигура компа(которая стоит под защитой другой фигуры)
     for(int x=0; x<8; x++){
         for(int y=0; y<8; y++){
             if(arr->playerOnBoard[x][y] != 0 && arr->playerOnBoard[x][y] != gui.idComputer){
