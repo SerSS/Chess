@@ -23,9 +23,13 @@
 const int cellWidth = 50;
 const int cellHeight = 50;
 
+<<<<<<< HEAD
 
 class AllArrays : public QObject {
     Q_OBJECT
+=======
+class AllArrays : public QObject {
+>>>>>>> Yura
 
 public:
     QPushButton cellButtons[8][8];
@@ -47,21 +51,21 @@ public:
     int figuresOnBoard[8][8];
     int playerOnBoard[8][8];
     int startFilling[8] = { 1, 2, 3, 4, 5, 3, 2, 1};        //Начальная расстановка фигур
+
     int unwantedMove[8][8];                             //Опасные хода
     int whereMove[100][2];                              //Возможные хода
     int counterWhereMove = 0;
 };
 
-
 class GUI : public QObject  {
     Q_OBJECT
 
 public:
+    AllArrays arr;
     QWidget* mainWidj;
     QGridLayout* mainLay;
 
-    AllArrays arr;
-    int playerWhoMakesMove = 1; //игрок который делает ход
+    int playerWhoMakesMove = 1; //игрок который делает ход, первым ходят белые
     int click = 0;          //Отвечает за распознавание выбора начальнойпозиции или позиции на которую ходим
     int startX = 0;         //Координаты фигуры которой хотим походить
     int startY = 0;         //
@@ -74,7 +78,8 @@ public:
     void initialFilling();
     void moveOneStep(int x, int y, int checkableX, int checkableY);
     void exchangeOfAPawn(int x, int y);
-    void allPossibleMove(int x, int y, int figure);
+
+    void allPossibelMove(int x, int y, int figure);
 
 public slots:
     void startComputeWay();

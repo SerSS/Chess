@@ -9,9 +9,7 @@ class ComputeIntelligence : public QObject  {
 
 public:
     GUI gui;
-    AllArrays *arr = &gui.arr;
-
-
+    AllArrays* arr = &gui.arr;
 
     void findDangerCell();
     int priceFigure(int x, int y);

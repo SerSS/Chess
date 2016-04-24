@@ -2,12 +2,12 @@
 
 void GUI::createGUI() {         //Создание главного окна
     idComputer = 1;
+
     for(int i=0; i<8; i++){
         for(int j=0; j<8; j++){
 
         }
     }
-
     mainWidj = new QWidget;
     mainLay = new QGridLayout;
 
@@ -65,16 +65,44 @@ void GUI::startComputeWay() {
     int first = (int)buttonText[0] - 48;
     int second = (int)buttonText[1] - 48;
 
+    if (click == 0 && playerWhoMakesMove == arr.playerOnBoard[first][second] && playerWhoMakesMove != idComputer) {
+        click = 1;
+        startX = first;
+        startY = second;
+    } else if (click == 1 && playerWhoMakesMove == arr.playerOnBoard[first][second]) {
+        startX = first;
+        startY = second;
+    } else if (click == 1 && playerWhoMakesMove != arr.playerOnBoard[first][second] && playerWhoMakesMove != 0) {
+        nextX = first;
+        nextY = second;
+        if (checkThePossibilityOfStep(startX, startY, nextX, nextY)) {
+            moveOneStep(startX, startY, nextX, nextY);
+            click = 0;
+            if (playerWhoMakesMove == 1) {
+                playerWhoMakesMove = 2;
+            } else if (playerWhoMakesMove == 2) {
+                playerWhoMakesMove = 1;
+            }
+        }
+    }
+
+    /*if (click == 0 && playerWhoMakesMove == 0 && arr.playerOnBoard[first][second] != 0) {
+        click = 1;
+        playerWhoMakesMove = arr.playerOnBoard[first][second];
+        startX = first;
+        startY = second;
+=======
     if (click == 0 && playerWhoMakesMove == 0 && arr.playerOnBoard[first][second] != 0 && playerWhoMakesMove != idComputer) {
         click = 1;
         playerWhoMakesMove = arr.playerOnBoard[first][second];
         startX = first;
         startY = second;
+>>>>>>> Sima
     } else if (arr.playerOnBoard[first][second] != 0 && click == 1 && arr.playerOnBoard[first][second] == playerWhoMakesMove) {
         startX = first;
         startY = second;
     } else if (click == 1 && playerWhoMakesMove != 0) {
-        nextX = first;          //походить и вызываем проверку возможности этого хода
+        nextX = first;
         nextY = second;
         if (checkThePossibilityOfStep(startX, startY, nextX, nextY)) {
             moveOneStep(startX, startY, nextX, nextY);
@@ -84,7 +112,7 @@ void GUI::startComputeWay() {
     } else {
         click = 0;
         playerWhoMakesMove = 0;
-    }
+    }*/
 
     /*if (click == 0 && arr.playerOnBoard[first][second] != 0){     //Если выбираем фигуру которой хотим походить, то записываем координаты  выбранной фигуры
         click = 1;
@@ -127,12 +155,12 @@ void GUI::initialFilling() {        //Начальное размещение ф
             arr.playerOnBoard[i][j] = 0;
         }
     }
-    for(int i=0;i<8;i++){
+    /*for(int i=0;i<8;i++){
         for(int j=0;j<8;j++){
             cout << arr.figuresOnBoard[i][j] << " ";
         }
         cout << endl;
-    }
+    }*/
     for(int i=0; i<8; i++){//Отображаем картинку
         for(int j=0; j<8; j++){
             if(arr.playerOnBoard[i][j]<=0 || arr.figuresOnBoard[i][j]<=0) continue;
