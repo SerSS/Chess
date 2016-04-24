@@ -24,7 +24,7 @@ const int cellWidth = 50;
 const int cellHeight = 50;
 
 
-class AllArrays : QObject {
+class AllArrays : public QObject {
     Q_OBJECT
 
 public:

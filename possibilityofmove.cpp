@@ -316,7 +316,46 @@ void GUI::allPossibleMove(int x, int y, int figure) {
             }
             break;
         case 2:     //конь
-
+            if(x + 1 < 8 && y + 2 < 8){
+                arr.whereMove[arr.counterWhereMove][0] = x + 1;
+                arr.whereMove[arr.counterWhereMove][1] = y + 2;
+                arr.counterWhereMove++;
+            }
+            if(x + 1 < 8 && y - 2 >= 0){
+                arr.whereMove[arr.counterWhereMove][0] = x + 1;
+                arr.whereMove[arr.counterWhereMove][1] = y - 2;
+                arr.counterWhereMove++;
+            }
+            if(x - 1 >= 0 && y + 2 < 8){
+                arr.whereMove[arr.counterWhereMove][0] = x - 1;
+                arr.whereMove[arr.counterWhereMove][1] = y + 2;
+                arr.counterWhereMove++;
+            }
+            if(x - 1 >= 0 && y - 2 >= 0){
+                arr.whereMove[arr.counterWhereMove][0] = x - 1;
+                arr.whereMove[arr.counterWhereMove][1] = y - 2;
+                arr.counterWhereMove++;
+            }
+            if(x + 2 < 8 && y + 1 < 8){
+                arr.whereMove[arr.counterWhereMove][0] = x + 2;
+                arr.whereMove[arr.counterWhereMove][1] = y + 1;
+                arr.counterWhereMove++;
+            }
+            if(x + 2 < 8 && y - 1 >= 0){
+                arr.whereMove[arr.counterWhereMove][0] = x + 2;
+                arr.whereMove[arr.counterWhereMove][1] = y - 1;
+                arr.counterWhereMove++;
+            }
+            if(x - 2 >= 0 && y + 1 < 8){
+                arr.whereMove[arr.counterWhereMove][0] = x - 2;
+                arr.whereMove[arr.counterWhereMove][1] = y + 1;
+                arr.counterWhereMove++;
+            }
+            if(x - 2 >= 0 && y - 1 >= 0){
+                arr.whereMove[arr.counterWhereMove][0] = x - 2;
+                arr.whereMove[arr.counterWhereMove][1] = y - 1;
+                arr.counterWhereMove++;
+            }
             break;
         case 3:     //офицер
 
