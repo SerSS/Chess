@@ -27,7 +27,6 @@ class AllArrays : public QObject {
 
 public:
     QPushButton cellButtons[8][8];
-
     QIcon figureImage[2][6] = {{             //Массив с обьектами изображений фигур
                             QPixmap(QDir::currentPath() + "/image/ladyaW.png"),
                             QPixmap(QDir::currentPath() + "/image/horseW.png"),
@@ -45,10 +44,10 @@ public:
 
     int figuresOnBoard[8][8];
     int playerOnBoard[8][8];
-    int startFilling[8] = {1, 2, 3, 4, 5, 3, 2, 1};        //Начальная расстановка фигур
+    int startFilling[8] = { 1, 2, 3, 4, 5, 3, 2, 1};        //Начальная расстановка фигур
 
-    int unwantedMove[8][8];
-    int whereMove[100][2];
+    int unwantedMove[8][8];                             //Опасные хода
+    int whereMove[100][2];                              //Возможные хода
     int counterWhereMove = 0;
 };
 
@@ -73,8 +72,8 @@ public:
     void initialFilling();
     void moveOneStep(int x, int y, int checkableX, int checkableY);
     void exchangeOfAPawn(int x, int y);
-    void allPossibelMove(int x, int y, int figure);
 
+    void allPossibelMove(int x, int y, int figure);
 
 public slots:
     void startComputeWay();

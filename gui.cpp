@@ -3,8 +3,8 @@
 void GUI::createGUI() {         //Создание главного окна
     idComputer = 1;
 
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
+    for(int i=0; i<8; i++){
+        for(int j=0; j<8; j++){
 
         }
     }
@@ -91,6 +91,13 @@ void GUI::startComputeWay() {
         playerWhoMakesMove = arr.playerOnBoard[first][second];
         startX = first;
         startY = second;
+=======
+    if (click == 0 && playerWhoMakesMove == 0 && arr.playerOnBoard[first][second] != 0 && playerWhoMakesMove != idComputer) {
+        click = 1;
+        playerWhoMakesMove = arr.playerOnBoard[first][second];
+        startX = first;
+        startY = second;
+>>>>>>> Sima
     } else if (arr.playerOnBoard[first][second] != 0 && click == 1 && arr.playerOnBoard[first][second] == playerWhoMakesMove) {
         startX = first;
         startY = second;
