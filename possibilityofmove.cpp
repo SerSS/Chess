@@ -278,12 +278,7 @@ void GUI::exchangeOfAPawn(int x, int y) {
 
 }
 
-
-<<<<<<< HEAD
-void GUI::allPossibelMove(int x, int y, int figure, int player) {
-=======
 void GUI::allPossibleMove(int x, int y, int figure, int player) {
->>>>>>> Yura
     arr.counterWhereMove = 0;
     switch(figure) {
         case 1:     //ладья
