@@ -73,7 +73,7 @@ public:
     void moveOneStep(int x, int y, int checkableX, int checkableY);
     void exchangeOfAPawn(int x, int y);
 
-    void allPossibelMove(int x, int y, int figure);
+    void allPossibleMove(int x, int y, int figure, int player);
 
 public slots:
     void startComputeWay();

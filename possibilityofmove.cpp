@@ -279,7 +279,7 @@ void GUI::exchangeOfAPawn(int x, int y) {
 }
 
 
-void GUI::allPossibleMove(int x, int y, int figure) {
+void GUI::allPossibleMove(int x, int y, int figure, int player) {
     arr.counterWhereMove = 0;
     switch(figure) {
         case 1:     //ладья
@@ -421,7 +421,16 @@ void GUI::allPossibleMove(int x, int y, int figure) {
             }
             break;
         case 5:     //король
-
+            for (int i = -1; i < 2; i++) {
+                for (int j = -1; i < 2; j++) {
+                    if (x + i < 8 && y + j < 8 && x + i >= 0 && y + j >= 0) {
+                        if (x != 0 && y != 0) {
+                            arr.whereMove[arr.counterWhereMove][0] = i;
+                            arr.whereMove[arr.counterWhereMove][1] = j;
+                        }
+                    }
+                }
+            }
             break;
         case 6:     //пешка
 
