@@ -49,7 +49,11 @@ public:
 
     int unwantedMove[8][8];                             //Опасные хода
     int whereMove[100][2];                              //Возможные хода
+    int whoAtackKing[25];
+    int figureKillers[8][8][25];
+
     int counterWhereMove = 0;
+    int shah = 0;
 };
 
 class GUI : public QObject  {
