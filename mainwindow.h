@@ -54,6 +54,10 @@ public:
 
     int counterWhereMove = 0;
     int shah = 0;
+<<<<<<< HEAD
+=======
+
+>>>>>>> Yura
 };
 
 class GUI : public QObject  {
@@ -79,6 +83,7 @@ public:
     void exchangeOfAPawn(int x, int y);
 
     void allPossibleMove(int x, int y, int figure, int player);
+
 
 public slots:
     void startComputeWay();
