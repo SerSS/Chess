@@ -23,15 +23,11 @@
 const int cellWidth = 50;
 const int cellHeight = 50;
 
-
-class GUI : public QObject  {
+class AllArrays : public QObject {
     Q_OBJECT
 
 public:
-    QWidget* mainWidj;
-    QGridLayout* mainLay;
     QPushButton cellButtons[8][8];
-
     QIcon figureImage[2][6] = {{             //Массив с обьектами изображений фигур
                             QPixmap(QDir::currentPath() + "/image/ladyaW.png"),
                             QPixmap(QDir::currentPath() + "/image/horseW.png"),
@@ -51,18 +47,40 @@ public:
     int playerOnBoard[8][8];
     int startFilling[8] = { 1, 2, 3, 4, 5, 3, 2, 1};        //Начальная расстановка фигур
 
-    int playerWhoMakesMove = 1; //игрок который делает ход
+    int unwantedMove[8][8];                             //Опасные хода
+    int whereMove[100][2];                              //Возможные хода
+    int whoAtackKing[25];
+    int figureKillers[8][8][25];
+
+    int counterWhereMove = 0;
+    int shah = 0;
+
+};
+
+class GUI : public QObject  {
+    Q_OBJECT
+
+public:
+    AllArrays arr;
+    QWidget* mainWidj;
+    QGridLayout* mainLay;
+
+    int playerWhoMakesMove = 1; //игрок который делает ход, первым ходят белые
     int click = 0;          //Отвечает за распознавание выбора начальнойпозиции или позиции на которую ходим
     int startX = 0;         //Координаты фигуры которой хотим походить
     int startY = 0;         //
     int nextX = 0;          //Координаты клетки на которую хотим походить
     int nextY = 0;          //
+    int idComputer = 1;
 
     void createGUI();
     bool checkThePossibilityOfStep(int x, int y, int checkableX, int checkableY);
     void initialFilling();
     void moveOneStep(int x, int y, int checkableX, int checkableY);
     void exchangeOfAPawn(int x, int y);
+
+    void allPossibleMove(int x, int y, int figure, int player);
+
 
 public slots:
     void startComputeWay();
