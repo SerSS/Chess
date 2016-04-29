@@ -54,10 +54,6 @@ public:
 
     int counterWhereMove = 0;
     int shah = 0;
-<<<<<<< HEAD
-=======
-
->>>>>>> Yura
 };
 
 class GUI : public QObject  {
