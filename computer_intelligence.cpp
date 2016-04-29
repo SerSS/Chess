@@ -18,7 +18,25 @@ void ComputeIntelligence::findDangerCell() {
             if (arr->playerOnBoard[x][y] != gui.idComputer) {
 
             } else if (arr->playerOnBoard[x][y] == gui.idComputer) {
+                if (arr->unwantedMove[x][y] == 0) {
+                    arr->unwantedMove[x][y] = 2;
+                }
+                gui.allPossibleMove(x, y, arr->figuresOnBoard[x][y], gui.idComputer);
 
+                for (int count = 0; count < arr->counterWhereMove; count++) {
+                    if (arr->playerOnBoard[arr->whereMove[count][0]][arr->whereMove[count][1]] == gui.idComputer
+                        && (arr->unwantedMove[arr->whereMove[count][0]][arr->whereMove[count][1]] == 0
+                        || arr->unwantedMove[arr->whereMove[count][0]][arr->whereMove[count][1]] == 2))
+                    {
+                        arr->unwantedMove[arr->whereMove[count][0]][arr->whereMove[count][1]] = 8;
+                    }
+                    else if (arr->playerOnBoard[arr->whereMove[count][0]][arr->whereMove[count][1]] == gui.idComputer
+                             && arr->unwantedMove[arr->whereMove[count][0]][arr->whereMove[count][1]] > 0
+                             && arr->unwantedMove[arr->whereMove[count][0]][arr->whereMove[count][1]] % 8 == 0)
+                    {
+                        arr->unwantedMove[arr->whereMove[count][0]][arr->whereMove[count][1]] += 8;
+                    }
+                }
             } else {
 
             }
